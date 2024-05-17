@@ -1,0 +1,49 @@
+.texto{
+  font-size: 45px;
+  font-weight: 300;
+  color: #007F5F;
+  text-align: center;
+  font-family: "Potta One", system-ui;
+}
+
+.image{
+  background-color: #FCFCE6;
+  width: 720px;
+  height: 700px;
+  background-size: cover;
+
+}
+
+.img{
+  width: 650px;
+  height: 650px;
+  position: absolute;
+  top: 150px;
+  left: 40px;
+
+}
+
+.email{
+    width: 550px;
+    height:40px;
+    border-radius: 50px;
+    border: 1px solid #007F5F;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.password{
+  width: 550px;
+  height:40px;
+  border-radius: 50px;
+  border: 1px solid #007F5F;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+:host ::ng-deep .p-dropdown{
+  width: 550px;
+  height:40px;
+  border-radius: 50px;
+  border: 1px solid #007F5F;
+}

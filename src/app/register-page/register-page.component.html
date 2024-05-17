@@ -1,0 +1,62 @@
+
+<div class="grid grid-nogutter surface-section text-800">
+  <div class="image col-12 md:col-6 overflow-hidden">
+    <h1 class="texto text-center">Bienvenido a <br> Cornway Fields</h1>
+    <img src="../../assets/img/maiz.png" alt="Image" class="img">
+  </div>
+  <div class="col-12 md:col-6 p-6 text-center md:text-left flex align-items-center ">
+      <section>
+          <h1 class="text-900 text-center">Registrarse</h1>
+          <div class="flex flex-column gap-2">
+
+
+            <label for="nombres">Nombres</label>
+            <input
+                pInputText
+                id="nombres"
+                class="email"
+                aria-describedby="username-help"
+            />
+
+
+            <label for="apellidos">Apellidos</label>
+            <input
+                pInputText
+                id="apellidos"
+                class="password"
+                aria-describedby="username-help"
+            />
+
+
+            <label for="correo">Correo</label>
+            <input
+                pInputText
+                id="correo"
+                class="password"
+                aria-describedby="username-help"/>
+
+
+            <label>Tipo de Usuario</label>
+            <p-dropdown
+                class="dropdown"
+                [options]=""
+                optionLabel="name"
+                />
+
+
+            <label for="password">Contraseña</label>
+            <input
+                pInputText
+                id="´password"
+                class="password"
+                aria-describedby="username-help"
+            />
+        </div>
+        <br>
+        <div class="text-center">
+          <p-button class="button text-center" label="Registrarse" [raised]="true" severity="success" (click)="goCornway()"/>
+        </div>
+      </section>
+  </div>
+
+</div>
