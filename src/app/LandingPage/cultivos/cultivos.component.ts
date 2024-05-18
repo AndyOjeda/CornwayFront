@@ -9,11 +9,12 @@ import { ModalDismissReasons, NgbDatepickerModule, NgbModal } from '@ng-bootstra
 import { DropdownModule } from 'primeng/dropdown';
 import { ApiService } from '../../Services/api.service';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-cultivos',
   standalone: true,
-  imports: [ButtonModule, RouterOutlet, CardModule, DialogModule, InputTextModule, NgbDatepickerModule, DropdownModule, CommonModule],
+  imports: [ButtonModule, RouterOutlet, CardModule, DialogModule, InputTextModule, NgbDatepickerModule, DropdownModule, CommonModule, FormsModule],
   templateUrl: './cultivos.component.html',
   styleUrl: './cultivos.component.css'
 })
