@@ -4,7 +4,7 @@
 <div class="d-flex flex-wrap" style="margin-left: 20px">
 
 
-  <p-card header="Cultivo Id" [style]="{ width: '380px', height: '210px' }">
+  <p-card header="Cultivo Id" [style]="{ width: '380px', height: '210px'}">
     <label>Nombre</label><br>
     <label>Tipo de Cultivo</label><br>
     <label>Area</label>
@@ -306,82 +306,6 @@
         </div>
     </ng-template>
   </p-card>
-
-  <p-card header="Cultivo Id" [style]="{ width: '1250px', height: '270px' }">
-    <div>
-      <button class="btn btn-lg" style="position: absolute;left: 1050px ; background-color:#007F5F; color: white; width: 250px; height: 60px;" (click)="open(content)">Añadir Cultivo</button>
-    </div>
-    <label>Nombre</label><br>
-    <label>Tipo Gestión de Cultivo</label><br>
-    <label>Fecha</label><br>
-    <label>Insumo Gestión de Cultivo</label><br>
-    <label>Comentarios</label>
-    <ng-template pTemplate="">
-        <div class="icons flex gap-3 mt-1">
-          <button>
-            <ng-template #content let-modal>
-              <div class="modal-header">
-                <h4 class="modal-title" id="modal-basic-title">Editar Gestion</h4>
-                <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
-              </div>
-              <div class="modal-body d-flex flex-wrap" style="height: 600px;">
-                <form>
-
-                  <div class="mb-3">
-                    <label for="dateOfBirth">Nombre de la Gestion</label>
-                    <div class="input-group">
-                      <input
-                        id="cultivo"
-                        class="form-control"
-                        type="text"
-                      />
-                    </div>
-                  </div>
-
-                  <div class="mb-3">
-                    <label for="tipo">Tipo Gestion de Cultivo</label><br>
-                    <p-dropdown
-                    class="dropdown"
-                    [options]=""
-                    optionLabel="name"
-                    />
-                  </div>
-                  <div class="mb-3">
-                    <label for="area">Fecha</label>
-                    <div class="input-group">
-                      <input
-                        id="area"
-                        class="form-control"
-                        type="date"
-                        style="width: 350px; border-radius: 5px;"
-                      />
-
-                      <div class="mb-3">
-                        <label for="area">Fecha</label>
-                        <div class="input-group">
-                          <input
-                            id="area"
-                            class="form-control"
-                            type="date"
-                          />
-                        </div>
-                      </div>
-
-                  </div>
-                </div>
-                </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Editar</button>
-              </div>
-            </ng-template>
-            <button class="" style="border: none;" (click)="open(content)"><i class="pi pi-pencil"></i></button>
-          </button>
-          <button><i class="pi pi-times"></i></button>
-        </div>
-    </ng-template>
-  </p-card>
-
 
   <ng-template #content let-modal>
     <div class="modal-header">
