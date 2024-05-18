@@ -4,6 +4,8 @@ import { Router} from '@angular/router';
 import { RouterOutlet } from '@angular/router';
 import { RouterLink } from '@angular/router';
 import { CornwayComponent } from '../LandingPage/cornway/cornway.component';
+import { AuthService } from '../Services/api.service';
+import { NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-sesion-page',
@@ -14,10 +16,15 @@ import { CornwayComponent } from '../LandingPage/cornway/cornway.component';
 })
 export class SesionPageComponent {
 
-    constructor(private router: Router,) { }
+  email: string = '';
+  password: string = '';
 
-    goCornway() {
-      this.router.navigate(['/Cornway']);
+    constructor(private router: Router,
+
+    ) { }
+
+
     }
 
-}
+
+

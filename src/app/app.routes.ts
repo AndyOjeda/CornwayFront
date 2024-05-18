@@ -16,6 +16,6 @@ export const routes: Routes = [
   { path: 'Cornway', component: CornwayComponent },
   { path: 'Cosecha', component: CosechaComponent },
   { path: 'Cultivos', component: CultivosComponent },
-  { path: 'Configuracion', component: ConfiguracionComponent }
+  { path: 'Configuracion', component: ConfiguracionComponent },
 
 ];

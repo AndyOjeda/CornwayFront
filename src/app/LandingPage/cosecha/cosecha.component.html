@@ -1,2 +1,115 @@
 
-<P>fUNCIONA COSECHA</P>
+<!-- CARDS CULTIVOS  -->
+<h1 class="title">Mis Cosechas</h1>
+<div class="d-flex flex-wrap" style="margin-left: 20px">
+
+
+  <p-card header="Cosecha Id" [style]="{ width: '380px', height: '210px' }">
+    <label>Nombre de Cosecha</label><br>
+    <label>Cantidad</label><br>
+    <label>Fecha</label>
+    <ng-template pTemplate="">
+        <div class="icons flex gap-3 mt-1">
+          <button>
+            <ng-template #content let-modal>
+              <div class="modal-header">
+                <h4 class="modal-title" id="modal-basic-title">Editar Cosecha</h4>
+                <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+              </div>
+              <div class="modal-body">
+                <form>
+
+                  <div class="mb-3">
+                    <label for="dateOfBirth">Nombre de Cosecha</label>
+                    <div class="input-group">
+                      <input
+                        id="cultivo"
+                        class="form-control"
+                        type="text"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="dateOfBirth">Cantidad</label>
+                    <div class="input-group">
+                      <input
+                        id="cultivo"
+                        class="form-control"
+                        type="text"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="dateOfBirth">Fecha</label>
+                    <div class="input-group">
+                      <input
+                        id="cultivo"
+                        class="form-control"
+                        type="text"
+                      />
+                    </div>
+                  </div>
+
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Editar</button>
+              </div>
+            </ng-template>
+            <button class="" style="border: none;" (click)="open(content)"><i class="pi pi-pencil"></i></button>
+          </button>
+          <button><i class="pi pi-times"></i></button>
+        </div>
+    </ng-template>
+  </p-card>
+
+
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Nuevo Cultivo</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <form>
+
+        <div class="mb-3">
+          <label for="dateOfBirth">Nombre del Cultivo</label>
+          <div class="input-group">
+            <input
+              id="cultivo"
+              class="form-control"
+              type="text"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="tipo">Tipo de Cultivo</label><br>
+          <p-dropdown
+          class="dropdown"
+          [options]=""
+          optionLabel="name"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="area">Area</label>
+          <div class="input-group">
+            <input
+              id="area"
+              class="form-control"
+              type="text"
+            />
+          </div>
+        </div>
+
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Añadir</button>
+    </div>
+  </ng-template>
+  <button class="btn btn-lg" style=" height: 50px; width: 200px; border: 1px solid #007F5F; margin-left: 550px;" (click)="open(content)">Añadir Cosecha</button>
+  <hr />
+</div>

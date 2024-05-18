@@ -6,6 +6,16 @@
   text-align: center;
 }
 
+.titleCultive{
+  font-size: 36px;
+  font-family: "Pridi", serif;
+  font-weight: 400;
+  color: #007F5F ;
+  text-align: center;
+  margin-top: 50px ;
+}
+
+
 .icons{
   justify-content: right;
 }
@@ -23,11 +33,13 @@ button{
   background-color: transparent;
   border: none;
 }
-
 .btn{
   margin: 10px;
   padding: 20px;
+  text-align: center;
 }
+
+
 
 
 

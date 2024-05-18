@@ -8,11 +8,14 @@ import { CultivosComponent } from '../cultivos/cultivos.component';
 import { CosechaComponent } from '../cosecha/cosecha.component';
 import { ConfiguracionComponent } from '../configuracion/configuracion.component';
 import { TabViewModule } from 'primeng/tabview';
+import { CerrarComponent } from '../cerrar/cerrar.component';
+
 
 @Component({
   selector: 'app-cornway',
   standalone: true,
-  imports: [RouterLink, RouterOutlet, ButtonModule, TabMenuModule, CultivosComponent, CosechaComponent, ConfiguracionComponent, TabViewModule],
+  imports: [RouterLink, RouterOutlet, ButtonModule, TabMenuModule, CultivosComponent,
+    CosechaComponent, ConfiguracionComponent, TabViewModule, CerrarComponent],
   templateUrl: './cornway.component.html',
   styleUrl: './cornway.component.css'
 })

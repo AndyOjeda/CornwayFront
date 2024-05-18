@@ -3,6 +3,8 @@ import { RouterOutlet } from '@angular/router';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import {StyleClassModule} from 'primeng/styleclass';
 import { ButtonModule } from 'primeng/button';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-root',
@@ -13,5 +15,5 @@ import { ButtonModule } from 'primeng/button';
 })
 export class AppComponent {
   title = 'Cornway';
-  
+
 }
