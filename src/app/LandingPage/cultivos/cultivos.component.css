@@ -20,7 +20,7 @@
   justify-content: right;
 }
 
-p-card{
+.card{
   font-size: 50px;
   margin: 25px;
   border-radius: 5px;
@@ -38,9 +38,6 @@ button{
   padding: 20px;
   text-align: center;
 }
-
-
-
 
 
 }

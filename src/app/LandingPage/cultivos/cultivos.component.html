@@ -3,12 +3,12 @@
 <h1 class="title">Mis Cultivos</h1>
 <div class="d-flex flex-wrap" style="margin-left: 20px">
 
-
-  <p-card header="Cultivo Id" [style]="{ width: '380px', height: '210px'}">
-    <label>Nombre</label><br>
-    <label>Tipo de Cultivo</label><br>
-    <label>Area</label>
-    <ng-template pTemplate="">
+  <div class="card" *ngFor="let cultivo of cultivos">
+    <p-card header="Cultivo {{ cultivo.idCultivo }}" [style]="{ width: '380px', height: '210px', }">
+      <label>{{ cultivo.nombre }}</label><br>
+      <label>Tipo de Cultivo: {{ cultivo.idTipoCultivo }}</label><br>
+      <label>Area: {{ cultivo.area }}</label>
+      <ng-template pTemplate="">
         <div class="icons flex gap-3 mt-1">
           <button>
             <ng-template #content let-modal>
@@ -60,123 +60,10 @@
           <button><i class="pi pi-times"></i></button>
         </div>
     </ng-template>
-  </p-card>
+    </p-card>
+  </div>
 
-  <p-card header="Cultivo Id" [style]="{ width: '380px', height: '210px' }">
-    <label>Nombre</label><br>
-    <label>Tipo de Cultivo</label><br>
-    <label>Area</label>
-    <ng-template pTemplate="">
-        <div class="icons flex gap-3 mt-1">
-          <button>
-            <ng-template #content let-modal>
-              <div class="modal-header">
-                <h4 class="modal-title" id="modal-basic-title">Editar Cultivo</h4>
-                <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
-              </div>
-              <div class="modal-body">
-                <form>
 
-                  <div class="mb-3">
-                    <label for="dateOfBirth">Nombre del Cultivo</label>
-                    <div class="input-group">
-                      <input
-                        id="cultivo"
-                        class="form-control"
-                        type="text"
-                      />
-                    </div>
-                  </div>
-
-                  <div class="mb-3">
-                    <label for="tipo">Tipo de Cultivo</label><br>
-                    <p-dropdown
-                    class="dropdown"
-                    [options]=""
-                    optionLabel="name"
-                    />
-                  </div>
-                  <div class="mb-3">
-                    <label for="area">Area</label>
-                    <div class="input-group">
-                      <input
-                        id="area"
-                        class="form-control"
-                        type="text"
-                      />
-                    </div>
-                  </div>
-
-                </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Editar</button>
-              </div>
-            </ng-template>
-            <button class="" style="border: none;" (click)="open(content)"><i class="pi pi-pencil"></i></button>
-          </button>
-          <button><i class="pi pi-times"></i></button>
-        </div>
-    </ng-template>
-  </p-card>
-
-  <p-card header="Cultivo Id" [style]="{ width: '380px', height: '210px' }">
-    <label>Nombre</label><br>
-    <label>Tipo de Cultivo</label><br>
-    <label>Area</label>
-    <ng-template pTemplate="">
-        <div class="icons flex gap-3 mt-1">
-          <button>
-            <ng-template #content let-modal>
-              <div class="modal-header">
-                <h4 class="modal-title" id="modal-basic-title">Editar Cultivo</h4>
-                <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
-              </div>
-              <div class="modal-body">
-                <form>
-
-                  <div class="mb-3">
-                    <label for="dateOfBirth">Nombre del Cultivo</label>
-                    <div class="input-group">
-                      <input
-                        id="cultivo"
-                        class="form-control"
-                        type="text"
-                      />
-                    </div>
-                  </div>
-
-                  <div class="mb-3">
-                    <label for="tipo">Tipo de Cultivo</label><br>
-                    <p-dropdown
-                    class="dropdown"
-                    [options]=""
-                    optionLabel="name"
-                    />
-                  </div>
-                  <div class="mb-3">
-                    <label for="area">Area</label>
-                    <div class="input-group">
-                      <input
-                        id="area"
-                        class="form-control"
-                        type="text"
-                      />
-                    </div>
-                  </div>
-
-                </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Editar</button>
-              </div>
-            </ng-template>
-            <button class="" style="border: none;" (click)="open(content)"><i class="pi pi-pencil"></i></button>
-          </button>
-          <button><i class="pi pi-times"></i></button>
-        </div>
-    </ng-template>
-  </p-card>
 
   <ng-template #content let-modal>
     <div class="modal-header">
@@ -186,34 +73,23 @@
     <div class="modal-body">
       <form>
 
-        <div class="mb-3">
-          <label for="dateOfBirth">Nombre del Cultivo</label>
-          <div class="input-group">
-            <input
-              id="cultivo"
-              class="form-control"
-              type="text"
-            />
-          </div>
-        </div>
-
-        <div class="mb-3">
-          <label for="tipo">Tipo de Cultivo</label><br>
-          <p-dropdown
-          class="dropdown"
-          [options]=""
-          optionLabel="name"
-          />
-        </div>
-        <div class="mb-3">
-          <label for="area">Area</label>
-          <div class="input-group">
-            <input
-              id="area"
-              class="form-control"
-              type="text"
-            />
-          </div>
+        <div class="form-container">
+          <h2>Agregar Cultivo</h2>
+          <form (ngSubmit)="CreateCultivo()">
+            <div class="form-group">
+              <label for="Nombre">Nombre</label>
+              <input type="text" id="Nombre" [(ngModel)]="Nombre" name="Nombre" required>
+            </div>
+            <div class="form-group">
+              <label for="idTipoCultivo">Id Tipo Cultivo</label>
+              <input type="number" id="idTipoCultivo" [(ngModel)]="IdTipoCultivo" name="idTipoCultivo" required>
+            </div>
+            <div class="form-group">
+              <label for="area">Área</label>
+              <input type="text" id="area" [(ngModel)]="area" name="area" required>
+            </div>
+            <button type="submit">Agregar</button>
+          </form>
         </div>
 
       </form>
@@ -306,6 +182,7 @@
         </div>
     </ng-template>
   </p-card>
+</div>
 
   <ng-template #content let-modal>
     <div class="modal-header">
@@ -353,7 +230,7 @@
   </ng-template>
   <button class="btn btn-lg" style=" height: 50px; width: 200px; border: 1px solid #007F5F; margin-left: 550px;" (click)="open(content)">Añadir Gestion</button>
   <hr />
-</div>
+
 
 
 

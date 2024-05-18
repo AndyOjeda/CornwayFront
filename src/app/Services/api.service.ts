@@ -41,7 +41,7 @@ export class ApiService {
     localStorage.removeItem('Authenticate');
   }
 
-  //Post de usuario
+  //Post de usuario - Registro Usuario
   register(Nombres: string, Apellidos: string, Correo: string, Clave: string, IdTipoUsuario: number): Observable<any> {
     // Crea una instancia de FormData y añade los campos de email y password
     const formData: FormData = new FormData();
@@ -68,5 +68,50 @@ export class ApiService {
         })
       );
   }
-  // Otros métodos relacionados con la autenticación pueden ir aquí
+
+
+  getCultivos(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/Cultivos`)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  getTiposCultivos(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/TiposCultivo`)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+    private handleError(error: Error) {
+        console.error('An error occurred:', error);
+        return throwError('Something went wrong; please try again later.');
+      }
+
+  CreateCultivo(Nombre: string, IdTipoCultivo: number, Area: string): Observable<any> {
+    // Crea una instancia de FormData y añade los campos de email y password
+    const formData: FormData = new FormData();
+    formData.append('Nombre', Nombre);
+    formData.append('IdTipoCultivo', IdTipoCultivo.toString());
+    formData.append('Area', Area);
+
+    return this.http.post<any>(`${this.apiUrl}/Cultivos`, formData, { observe: 'response' })
+      .pipe(
+        tap(response => {
+          console.log('Login successful', response);
+          if (response.status === 201) {
+            localStorage.setItem('Authenticate', true.toString());
+          } else {
+            throw new Error('Authentication failed');
+          }
+        }),
+        catchError(error => {
+          // Maneja el error de la solicitud HTTP aquí
+          console.error('Login failed', error);
+          return throwError(error);
+        })
+      );
+  }
+
 }
