@@ -12,17 +12,5 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
 
-  //get TiposGestionCultivo
-  getTiposGestionCultivo(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/TiposGestionCultivo`)
-      .pipe(
-        tap(response => {
-          console.log('Get TiposGestionCultivo successful', response);
-        }),
-        catchError(error => {
-          console.error('Get TiposGestionCultivo failed', error);
-          return throwError(error);
-        })
-      );
-  }
+
 }
