@@ -7,6 +7,9 @@ import { TabMenuModule } from 'primeng/tabmenu';
 import { CultivosComponent } from '../cultivos/cultivos.component';
 import { CosechaComponent } from '../cosecha/cosecha.component';
 import { TabViewModule } from 'primeng/tabview';
+import { Routes } from '@angular/router';
+import { ConfiguracionComponent } from '../../configuracion/configuracion.component';
+
 
 
 @Component({
