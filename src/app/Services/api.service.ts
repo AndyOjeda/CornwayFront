@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpResponse, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 
@@ -84,14 +84,51 @@ export class ApiService {
       );
   }
 
+  updateGestion(IdGestionCultivo: number, IdCultivo: number, IdTipoGestionCultivo: number, IdInsumoGestionCultivo: number, FechaGestion: string, Comentario: string): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append('IdGestionCultivo', IdGestionCultivo.toString());
+    formData.append('IdCultivo', IdCultivo.toString());
+    formData.append('IdTipoGestionCultivo', IdTipoGestionCultivo.toString());
+    formData.append('IdInsumoGestionCultivo', IdInsumoGestionCultivo.toString());
+    formData.append('FechaGestion', FechaGestion);
+    formData.append('Comentario', Comentario);
+
+    const headers = new HttpHeaders().set('Content-Type', 'multipart/form-data');
+
+    return this.http.put<any>(`${this.apiUrl}/gestiones/${IdGestionCultivo}`, formData, { headers, observe: 'response' })
+      .pipe(
+        tap(response => {
+          console.log('Gestión actualizada exitosamente', response);
+          if (response.status === 200) {
+            console.log('Gestión actualizada con éxito');
+          } else {
+            throw new Error('Error al actualizar la gestión');
+          }
+        }),
+        catchError(error => {
+          console.error('Error al actualizar la gestión', error);
+          return throwError(error);
+        })
+      );
+  }
+
+
+  getGestion(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/GestionesCultivo`)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
     private handleError(error: Error) {
         console.error('An error occurred:', error);
         return throwError('Something went wrong; please try again later.');
       }
 
-  CreateCultivo(Nombre: string, IdTipoCultivo: number, Area: string): Observable<any> {
+  CreateCultivo(IdUsuario: number,Nombre: string, IdTipoCultivo: number, Area: string): Observable<any> {
     // Crea una instancia de FormData y añade los campos de email y password
     const formData: FormData = new FormData();
+    formData.append('IdUsuario', IdUsuario.toString());
     formData.append('Nombre', Nombre);
     formData.append('IdTipoCultivo', IdTipoCultivo.toString());
     formData.append('Area', Area);
@@ -113,5 +150,13 @@ export class ApiService {
         })
       );
   }
+
+  deleteCultivo(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/Cultivos/${id}`)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
 
 }

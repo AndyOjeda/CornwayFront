@@ -57,12 +57,11 @@
             </ng-template>
             <button class="" style="border: none;" (click)="open(content)"><i class="pi pi-pencil"></i></button>
           </button>
-          <button><i class="pi pi-times"></i></button>
+          <button (click)="deleteCultivo(cultivo.id)"><i class="pi pi-times" ></i></button>
         </div>
     </ng-template>
     </p-card>
   </div>
-
 
 
   <ng-template #content let-modal>
@@ -77,6 +76,10 @@
           <h2>Agregar Cultivo</h2>
           <form (ngSubmit)="CreateCultivo()">
             <div>
+              <label for="IdUsuario">Id Usuario a Asignar</label>
+              <input type="text" id="IdUsuario" [(ngModel)]="IdUsuario" name="IdUsuario" required>
+            </div>
+            <div>
               <label for="Nombres">Nombres</label>
               <input type="text" id="Nombres" [(ngModel)]="Nombre" name="Nombres" required>
             </div>
@@ -88,14 +91,11 @@
               <label for="area">Área</label>
               <input type="text" id="area" [(ngModel)]="Area" name="area" required>
             </div>
-            <button type="submit">Agregar</button>
+            <button type="submit" (click)="CreateCultivo()">Agregar</button>
           </form>
         </div>
 
       </form>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Añadir</button>
     </div>
   </ng-template>
   <button class="btn btn-lg" style=" height: 50px; width: 200px; border: 1px solid #007F5F; margin-left: 550px;" (click)="open(content)">Añadir Cultivo</button>
@@ -104,72 +104,25 @@
 
 <!-- CARDS GESTION DE CULTIVOS -->
 
-<h1 class="titleCultive">Gestión de Cultivos</h1>
+<h1 class="title" style="margin-top: 50px;">Gestion de Cultivos</h1>
 <div class="d-flex flex-wrap" style="margin-left: 20px">
 
-  <!-- TARJETAS -->
-  <p-card header="Cultivo Id" [style]="{ width: '1250px', height: '270px' }">
-    <div>
-      <button class="btn btn-lg" style="position: absolute;left: 1050px ; background-color:#007F5F; color: white; width: 250px; height: 60px;" (click)="open(content)">Añadir Cultivo</button>
-    </div>
-    <label>Nombre</label><br>
-    <label>Tipo Gestión de Cultivo</label><br>
-    <label>Fecha</label><br>
-    <label>Insumo Gestión de Cultivo</label><br>
-    <label>Comentarios</label>
-    <ng-template pTemplate="">
+  <div class="card" *ngFor="let cultivo of cultivos">
+    <p-card header="Cultivo {{ cultivo.idCultivo }}" [style]="{ width: '1200px', height: '210px', }">
+      <label>{{ cultivo.nombre }}</label><br>
+      <label>Tipo de Cultivo: {{ cultivo.idTipoCultivo }}</label><br>
+      <label>Area: {{ cultivo.area }}</label>
+      <ng-template pTemplate="">
         <div class="icons flex gap-3 mt-1">
           <button>
             <ng-template #content let-modal>
               <div class="modal-header">
-                <h4 class="modal-title" id="modal-basic-title">Editar Gestion</h4>
+                <h4 class="modal-title" id="modal-basic-title">Editar Cultivo</h4>
                 <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
               </div>
-              <div class="modal-body d-flex flex-wrap" style="height: 600px;">
+              <div class="modal-body">
                 <form>
 
-                  <div class="mb-3">
-                    <label for="dateOfBirth">Nombre de la Gestion</label>
-                    <div class="input-group">
-                      <input
-                        id="cultivo"
-                        class="form-control"
-                        type="text"
-                      />
-                    </div>
-                  </div>
-
-                  <div class="mb-3">
-                    <label for="tipo">Tipo Gestion de Cultivo</label><br>
-                    <p-dropdown
-                    class="dropdown"
-                    [options]=""
-                    optionLabel="name"
-                    />
-                  </div>
-                  <div class="mb-3">
-                    <label for="area">Fecha</label>
-                    <div class="input-group">
-                      <input
-                        id="area"
-                        class="form-control"
-                        type="date"
-                        style="width: 350px; border-radius: 5px;"
-                      />
-
-                      <div class="mb-3">
-                        <label for="area">Fecha</label>
-                        <div class="input-group">
-                          <input
-                            id="area"
-                            class="form-control"
-                            type="date"
-                          />
-                        </div>
-                      </div>
-
-                  </div>
-                </div>
                 </form>
               </div>
               <div class="modal-footer">
@@ -178,11 +131,12 @@
             </ng-template>
             <button class="" style="border: none;" (click)="open(content)"><i class="pi pi-pencil"></i></button>
           </button>
-          <button><i class="pi pi-times"></i></button>
+          <button (click)="deleteCultivo(cultivo.id)"><i class="pi pi-times" ></i></button>
         </div>
     </ng-template>
-  </p-card>
-</div>
+    </p-card>
+  </div>
+
 
   <ng-template #content let-modal>
     <div class="modal-header">
@@ -192,44 +146,39 @@
     <div class="modal-body">
       <form>
 
-        <div class="mb-3">
-          <label for="dateOfBirth">Nombre del Cultivo</label>
-          <div class="input-group">
-            <input
-              id="cultivo"
-              class="form-control"
-              type="text"
-            />
+        <form (ngSubmit)="updateGestion()">
+          <div>
+            <label for="IdGestionCultivo">ID de la Gestión:</label>
+            <input type="number" id="IdGestionCultivo" name="IdGestionCultivo" [(ngModel)]="IdGestionCultivo" required>
           </div>
-        </div>
-
-        <div class="mb-3">
-          <label for="tipo">Tipo de Cultivo</label><br>
-          <p-dropdown
-          class="dropdown"
-          [options]=""
-          optionLabel="name"
-          />
-        </div>
-        <div class="mb-3">
-          <label for="area">Area</label>
-          <div class="input-group">
-            <input
-              id="area"
-              class="form-control"
-              type="text"
-            />
+          <div>
+            <label for="IdCultivo">ID del Cultivo:</label>
+            <input type="number" id="IdCultivo" name="IdCultivo" [(ngModel)]="IdCultivo" required>
           </div>
-        </div>
-
+          <div>
+            <label for="IdTipoGestionCultivo">ID del Tipo de Gestión:</label>
+            <input type="number" id="IdTipoGestionCultivo" name="IdTipoGestionCultivo" [(ngModel)]="IdTipoGestionCultivo" required>
+          </div>
+          <div>
+            <label for="IdInsumoGestionCultivo">ID del Insumo de Gestión:</label>
+            <input type="number" id="IdInsumoGestionCultivo" name="IdInsumoGestionCultivo" [(ngModel)]="IdInsumoGestionCultivo" required>
+          </div>
+          <div>
+            <label for="FechaGestion">Fecha de Gestión:</label>
+            <input type="date" id="FechaGestion" name="FechaGestion" [(ngModel)]="FechaGestion" required>
+          </div>
+          <div>
+            <label for="Comentario">Comentario:</label>
+            <textarea id="Comentario" name="Comentario" [(ngModel)]="Comentario" required></textarea>
+          </div>
+          <button type="submit">Actualizar Gestión</button>
+        </form>
       </form>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Añadir</button>
     </div>
   </ng-template>
   <button class="btn btn-lg" style=" height: 50px; width: 200px; border: 1px solid #007F5F; margin-left: 550px;" (click)="open(content)">Añadir Gestion</button>
   <hr />
+</div>
 
 
 

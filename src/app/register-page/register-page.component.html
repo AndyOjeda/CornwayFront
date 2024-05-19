@@ -6,27 +6,32 @@
   </div>
   <div class="col-12 md:col-6 p-6 text-center md:text-left flex align-items-center ">
     <form (ngSubmit)="register()">
-      <div>
-        <label for="Nombres">Nombres</label>
-        <input type="text" id="Nombres" [(ngModel)]="Nombres" name="Nombres" required>
+
+      <div style="text-align: center;">
+        <label class="text">Registrarse</label><br>
       </div>
+
       <div>
-        <label for="Apellidos">Apellidos</label>
-        <input type="text" id="Apellidos" [(ngModel)]="Apellidos" name="Apellidos" required>
-      </div>
-      <div>
-        <label for="Correo">Correo</label>
-        <input type="email" id="Correo" [(ngModel)]="Correo" name="Correo" required>
+        <label class="Subtitle" for="Nombres">Nombres</label><br>
+        <input class="input" type="text" id="Nombres" [(ngModel)]="Nombres" name="Nombres" required>
       </div>
       <div>
-        <label for="Clave">Clave</label>
-        <input type="password" id="Clave" [(ngModel)]="Clave" name="Clave" required>
+        <label class="Subtitle" for="Apellidos">Apellidos</label><br>
+        <input class="input" type="text" id="Apellidos" [(ngModel)]="Apellidos" name="Apellidos" required>
       </div>
-      <div> 
-        <label for="IdTipoUsuario">Tipo de Usuario</label>
-        <input type="number" id="IdTipoUsuario" [(ngModel)]="IdTipoUsuario" name="IdTipoUsuario" required>
+      <div>
+        <label class="Subtitle" for="Correo">Correo</label> <br>
+        <input class="input" type="email" id="Correo" [(ngModel)]="Correo" name="Correo" required>
       </div>
-      <button type="submit">Login</button>
+      <div>
+        <label class="Subtitle" for="Clave">Clave</label> <br>
+        <input class="input" type="password" id="Clave" [(ngModel)]="Clave" name="Clave" required>
+      </div>
+      <div>
+        <label class="Subtitle" for="IdTipoUsuario">Tipo de Usuario</label> <br>
+        <input class="input" type="number" min="1" id="IdTipoUsuario" [(ngModel)]="IdTipoUsuario" name="IdTipoUsuario" required>
+      </div>
+      <button class="button" type="submit">Registrar</button>
     </form>
 
   </div>

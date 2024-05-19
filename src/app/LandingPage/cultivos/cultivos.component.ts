@@ -18,13 +18,24 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './cultivos.component.html',
   styleUrl: './cultivos.component.css'
 })
-export class CultivosComponent {
+export class CultivosComponent{
 
   cultivos: any[] = [];
+  Gestion: any[] = [];
   TiposCultivos: any[] = [];
-  Nombre: string = '';
+  IdUsuario: number = 0;
   IdTipoCultivo: number = 0;
   Area: string = '';
+  Nombre: string = '';
+  IdGestionCultivo: number = 0;
+  IdCultivo: number = 0;
+  IdTipoGestionCultivo: number = 0;
+  IdInsumoGestionCultivo: number = 0;
+  FechaGestion: string = '';
+  Comentario: string = '';
+
+
+
 
   constructor(private ApiService: ApiService) {}
 
@@ -56,10 +67,23 @@ export class CultivosComponent {
     );
   }
 
+  getGestion(): void {
+    this.ApiService.getGestion().subscribe(
+      data => {
+        this.Gestion = data;
+      },
+      error => {
+        console.error('Error fetching data', error);
+        // Manejar el error adecuadamente
+      }
+    );
+  }
+
   CreateCultivo(): void {
-    this.ApiService.CreateCultivo(this.Nombre, this.IdTipoCultivo, this.Area).subscribe(
+    this.ApiService.CreateCultivo(this.IdUsuario, this.Nombre, this.IdTipoCultivo, this.Area).subscribe(
       response => {
         console.log('Cultivo added successfully', response);
+        window.location.reload();
         // Maneja la respuesta exitosa aquí
       },
       error => {
@@ -68,6 +92,36 @@ export class CultivosComponent {
       }
     );
   }
+
+  deleteCultivo(id: number): void {
+    this.ApiService.deleteCultivo(id).subscribe(
+      response => {
+        console.log('Cultivo deleted successfully', response);
+        // Actualizar la lista de cultivos después de la eliminación
+        this.cultivos = this.cultivos.filter(cultivo => cultivo.id !== id);
+      },
+      error => {
+        console.error('Error deleting cultivo', error);
+        // Manejar el error adecuadamente
+      }
+    );
+  }
+
+  updateGestion() {
+    this.ApiService.updateGestion(this.IdGestionCultivo, this.IdCultivo, this.IdTipoGestionCultivo, this.IdInsumoGestionCultivo, this.FechaGestion, this.Comentario)
+      .subscribe((response: any) => {
+        console.log('Gestión actualizada:', response);
+        // Aquí podrías redirigir o mostrar un mensaje de éxito
+      }, error => {
+        console.error('Error al actualizar gestión:', error);
+        // Aquí podrías mostrar un mensaje de error al usuario
+      });
+  }
+
+
+
+
+
 
 
   private modalService = inject(NgbModal);
@@ -83,8 +137,6 @@ export class CultivosComponent {
 			},
 		);
 	}
-
-
 	private getDismissReason(reason: any): string {
 		switch (reason) {
 			case ModalDismissReasons.ESC:
