@@ -230,7 +230,4 @@ updateTiposInsumoGestionCultivo(IdTipoInsumoGestionCultivo: number, Nombre: stri
     );
 }
 
-
-
-
 }
