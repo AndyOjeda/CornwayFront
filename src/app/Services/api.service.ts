@@ -158,7 +158,79 @@ export class ApiService {
       );
   }
 
-  
+  //get TiposInsumoGestionCultivos
+getTiposInsumoGestionCultivos(): Observable<any> {
+  return this.http.get<any>(`${this.apiUrl}/TiposInsumoGestionCultivo`)
+    .pipe(
+      catchError(this.handleError)
+    );
+}
+//get TiposInsumoGestionCultivo por id
+getTiposInsumoGestionCultivo(id: number): Observable<any> {
+  return this.http.get<any>(`${this.apiUrl}/TiposInsumoGestionCultivo/${id}`)
+    .pipe(
+      catchError(this.handleError)
+    );
+}
+
+//CreateTiposInsumoGestionCultivo
+CreateTiposInsumoGestionCultivo(Nombre: string): Observable<any> {
+  // Crea una instancia de FormData y añade los campos de email y password
+  const formData: FormData = new FormData();
+  formData.append('Nombre', Nombre);
+
+  return this.http.post<any>(`${this.apiUrl}/TiposInsumoGestionCultivo`, formData, { observe: 'response' })
+    .pipe(
+      tap(response => {
+        console.log('Login successful', response);
+        if (response.status === 201) {
+          localStorage.setItem('Authenticate', true.toString());
+        } else {
+          throw new Error('Authentication failed');
+        }
+      }),
+      catchError(error => {
+        // Maneja el error de la solicitud HTTP aquí
+        console.error('Login failed', error);
+        return throwError(error);
+      })
+    );
+}
+//delete TiposInsumoGestionCultivo
+deleteTiposInsumoGestionCultivo(id: number): Observable<any> {
+  return this.http.delete<any>(`[{this.apiUrl}/TiposInsumoGestionCultivo/${id}`)
+    .pipe(
+      catchError(this.handleError)
+    );
+}
+
+
+//Put TiposInsumoGestionCultivo
+updateTiposInsumoGestionCultivo(IdTipoInsumoGestionCultivo: number, Nombre: string): Observable<any> {
+  const formData: FormData = new FormData();
+  formData.append('IdTipoInsumoGestionCultivo', IdTipoInsumoGestionCultivo.toString());
+  formData.append('Nombre', Nombre);
+
+  const headers = new HttpHeaders().set('Content-Type', 'multipart/form-data');
+
+  return this.http.put<any>(`${this.apiUrl}/TiposInsumoGestionCultivo/${IdTipoInsumoGestionCultivo}`, formData, { headers, observe: 'response' })
+    .pipe(
+      tap(response => {
+        console.log('Tipo de insumo actualizado exitosamente', response);
+        if (response.status === 200) {
+          console.log('Tipo de insumo actualizado con éxito');
+        } else {
+          throw new Error('Error al actualizar el tipo de insumo');
+        }
+      }),
+      catchError(error => {
+        console.error('Error al actualizar el tipo de insumo', error);
+        return throwError(error);
+      })
+    );
+}
+
+
 
 
 }

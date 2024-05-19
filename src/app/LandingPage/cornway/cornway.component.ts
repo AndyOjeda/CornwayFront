@@ -7,20 +7,20 @@ import { TabMenuModule } from 'primeng/tabmenu';
 import { CultivosComponent } from '../cultivos/cultivos.component';
 import { CosechaComponent } from '../cosecha/cosecha.component';
 import { TabViewModule } from 'primeng/tabview';
-import { Routes } from '@angular/router';
-import { ConfiguracionComponent } from '../../configuracion/configuracion.component';
-
 
 
 @Component({
   selector: 'app-cornway',
   standalone: true,
   imports: [RouterLink, RouterOutlet, ButtonModule, TabMenuModule, CultivosComponent,
-    CosechaComponent, TabViewModule],
+    CosechaComponent, TabViewModule ],
   templateUrl: './cornway.component.html',
   styleUrl: './cornway.component.css'
 })
 export class CornwayComponent {
+
+  Nombre: string = "Andres";
+  Apellido: string = "Ojeda";
 
   constructor(private router: Router,) { }
 
