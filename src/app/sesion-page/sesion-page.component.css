@@ -11,13 +11,14 @@
 }
 
 .text{
-  font-size: 40px;
+  font-size: 45px;
   font-weight: 300;
   color: #007F5F;
   text-align: center;
   font-family: "Potta One", system-ui;
   margin-bottom: 20px;
-  margin-left: 60px;
+  margin-left: 50px;
+  text-shadow: 8px 5px 8px #ccc;
 }
 
 .Subtitle{
@@ -26,7 +27,7 @@
   color: #444444;
   text-align: center;
   font-family: "Potta One", system-ui;
-  margin-left: 50px;
+  margin-left: 60px;
   margin-bottom: 5px;
 }
 
@@ -37,25 +38,16 @@
   border: 1px solid #ccc;
   padding: 10px;
   margin-bottom: 10px;
-  margin-left: 40px;
+  margin-left: 50px;
 }
 
-.image{
-  background-color: #FCFCE6;
-  width: 720px;
-  height: 700px;
-  background-size: cover;
-
+img{
+  margin-left: 50px;
+  width: 700px;
+  height: 730px;
 }
 
-.img{
-  width: 650px;
-  height: 650px;
-  position: absolute;
-  top: 150px;
-  left: 40px;
 
-}
 
 .email{
     width: 550px;
@@ -75,26 +67,19 @@
   margin-bottom: 10px;
 }
 
-.olvidaste{
-  font-size: 15px;
-  font-weight: 300;
-  margin-left: 5px;
-  margin-top: 50px;
-}
 
 .button{
-  width: 170px;
-  height: 40px;
+  width: 250px;
+  height: 45px;
   border-radius: 50px;
   background-color: #007F5F;
   color: white;
   font-size: 20px;
   font-weight: 400;
-  margin-left: 40px;
   margin-top: 20px;
   border: none;
   box-shadow: 5px 5px 4px #ccc;
-  margin-left: 280px;
+  margin-left: 250px;
   font-family: "Potta One", system-ui;
   font-weight: 100;
 }
