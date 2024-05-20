@@ -20,13 +20,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class GestionComponent {
 
-  cultivos: any[] = [];
-  gestion: any[] = [];
-  TiposCultivos: any[] = [];
-  IdUsuario: number = 0;
-  IdTipoCultivo: number = 0;
-  Area: string = '';
-  Nombre: string = '';
+  gestiones: any[] = [];
   IdGestionCultivo: number = 0;
   IdCultivo: number = 0;
   IdTipoGestionCultivo: number = 0;
@@ -40,25 +34,25 @@ export class GestionComponent {
 
   //Traer los cultivos
   ngOnInit(): void {
-    this.getCultivos();
+    this.getGestionesCultivos();
   }
 
   //METODOS CULTIVOS
-  getCultivos(){
+  getGestionesCultivos(){
     const idUsuario = localStorage.getItem('IdUsuario');
     if(idUsuario){
-    this.ApiService.getCultivos().subscribe((data: any) => {
+    this.ApiService.getGestionesCultivos().subscribe((data: any) => {
       console.log(data);
-      this.cultivos = data.filter((cultivo: any) => cultivo.idUsuario == idUsuario);
-      console.log(this.cultivos);
+      // this.gestiones = data.filter((cultivo: any) => cultivo.idUsuario == idUsuario);
+      // console.log(this.gestiones);
     });
   }
 }
 
-  CreateCultivo(): void {
+  CreateGestionCultivo(): void {
     const idUsuario = localStorage.getItem('IdUsuario');
     if (idUsuario) {
-      this.ApiService.CreateCultivo(+idUsuario, this.Nombre, this.IdTipoCultivo, this.Area).subscribe(
+      this.ApiService.CreateGestionCultivo(this.IdCultivo, this.IdTipoGestionCultivo, this.IdInsumoGestionCultivo, this.FechaGestion, this.Comentario).subscribe(
         response => {
           console.log('Cultivo added successfully', response);
           window.location.reload();
@@ -77,7 +71,7 @@ export class GestionComponent {
   UpdateCultivo(): void {
     const idUsuario = localStorage.getItem('IdUsuario');
     if (idUsuario) {
-    this.ApiService.updateCultivo(this.IdCultivo, +idUsuario, this.Nombre, this.IdTipoCultivo, this.Area).subscribe(
+    this.ApiService.updateGestionCultivo(this.IdGestionCultivo,this.IdCultivo, this.IdTipoGestionCultivo, this.IdInsumoGestionCultivo, this.FechaGestion, this.Comentario).subscribe(
       response => {
         console.log('Cultivo updated successfully', response);
         window.location.reload();
@@ -99,8 +93,8 @@ export class GestionComponent {
     if(idUsuario){
     this.ApiService.getGestionesCultivos().subscribe((data: any) => {
       console.log(data);
-      this.gestion = data.filter((gestion: any) => gestion.idUsuario == idUsuario);
-      console.log(this.gestion);
+      this.gestiones = data.filter((gestion: any) => gestion.idUsuario == idUsuario);
+      console.log(this.gestiones);
     });
   }
 }

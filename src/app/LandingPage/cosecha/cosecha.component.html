@@ -1,70 +1,52 @@
 
 <!-- CARDS CULTIVOS  -->
-<h1 class="title">Mis Cosechas</h1>
+<h1 class="title">Mis Cultivos</h1>
 <div class="d-flex flex-wrap" style="margin-left: 20px">
 
-
-  <p-card header="Cosecha Id" [style]="{ width: '380px', height: '210px' }">
-    <label>Nombre de Cosecha</label><br>
-    <label>Cantidad</label><br>
-    <label>Fecha</label>
-    <ng-template pTemplate="">
+  <div class="card" *ngFor="let cose of cosechas">
+    <p-card header="Cultivo {{ cose.nombre }}" [style]="{ width: '380px', height: '180px', }">
+      <label>Tipo de Cultivo: {{ cose.idTipoCultivo }}</label><br>
+      <label>Area: {{ cose.area }}</label>
+      <ng-template pTemplate="">
         <div class="icons flex gap-3 mt-1">
           <button>
             <ng-template #content let-modal>
               <div class="modal-header">
-                <h4 class="modal-title" id="modal-basic-title">Editar Cosecha</h4>
-                <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+                <h4 class="modal-title" id="modal-basic-title">Editar Cultivo</h4>
+                <button type="icon-button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
               </div>
               <div class="modal-body">
-                <form>
 
-                  <div class="mb-3">
-                    <label for="dateOfBirth">Nombre de Cosecha</label>
-                    <div class="input-group">
-                      <input
-                        id="cultivo"
-                        class="form-control"
-                        type="text"
-                      />
-                    </div>
+              <form>
+
+                  <div class="form-container">
+                    <h2>Editar Cultivo</h2>
+                    <form (ngSubmit)="UpdateCultivo()">
+                      <div>
+                        <label class="titles" for="Nombres">Nombre Para Cultivo</label>
+                        <input class="inputname" type="text" id="Nombres" [(ngModel)]="Nombre" name="Nombres" required>
+                      </div>
+                      <div class="form-group">
+                        <label class="titles" for="idTipoCultivo">Id Tipo Cultivo</label>
+                        <input class="inputnumber" type="number" id="idTipoCultivo" [(ngModel)]="IdTipoCultivo" name="idTipoCultivo" required>
+                      </div>
+                      <div class="form-group">
+                        <label class="titles" for="area">Área</label>
+                        <input class="inputarea" type="text" id="area" [(ngModel)]="Area" name="area" required>
+                      </div>
+                      <button class="buttonsubmit" type="submit">Editar</button>
+                    </form>
                   </div>
-
-                  <div class="mb-3">
-                    <label for="dateOfBirth">Cantidad</label>
-                    <div class="input-group">
-                      <input
-                        id="cultivo"
-                        class="form-control"
-                        type="text"
-                      />
-                    </div>
-                  </div>
-
-                  <div class="mb-3">
-                    <label for="dateOfBirth">Fecha</label>
-                    <div class="input-group">
-                      <input
-                        id="cultivo"
-                        class="form-control"
-                        type="text"
-                      />
-                    </div>
-                  </div>
-
-                </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Editar</button>
+              </form>
               </div>
             </ng-template>
-            <button class="" style="border: none;" (click)="open(content)"><i class="pi pi-pencil"></i></button>
           </button>
-          <button><i class="pi pi-times"></i></button>
+          <button class="Minibutton iconbutton" (click)="open(content)"><i class="pi pi-pencil"></i></button>
+          <button class="Minibutton iconbutton"><i class="pi pi-times"></i></button>
         </div>
     </ng-template>
-  </p-card>
-
+    </p-card>
+  </div>
 
   <ng-template #content let-modal>
     <div class="modal-header">
@@ -74,43 +56,38 @@
     <div class="modal-body">
       <form>
 
-        <div class="mb-3">
-          <label for="dateOfBirth">Nombre del Cultivo</label>
-          <div class="input-group">
-            <input
-              id="cultivo"
-              class="form-control"
-              type="text"
-            />
-          </div>
-        </div>
-
-        <div class="mb-3">
-          <label for="tipo">Tipo de Cultivo</label><br>
-          <p-dropdown
-          class="dropdown"
-          [options]=""
-          optionLabel="name"
-          />
-        </div>
-        <div class="mb-3">
-          <label for="area">Area</label>
-          <div class="input-group">
-            <input
-              id="area"
-              class="form-control"
-              type="text"
-            />
-          </div>
+        <div class="form-container">
+          <h2>Agregar Cultivo</h2>
+          <form (ngSubmit)="CreateCultivo()">
+            <div>
+              <label class="titles" for="Nombres">Nombre Para Cultivo</label>
+              <input class="inputname" type="text" id="Nombres" [(ngModel)]="Nombre" name="Nombres" required>
+            </div>
+            <div class="form-group">
+              <label class="titles" for="idTipoCultivo">Id Tipo Cultivo</label>
+              <input class="inputnumber" type="number" id="idTipoCultivo" [(ngModel)]="IdTipoCultivo" name="idTipoCultivo" required>
+            </div>
+            <div class="form-group">
+              <label class="titles" for="area">Área</label>
+              <input class="inputarea" type="text" id="area" [(ngModel)]="Area" name="area" required>
+            </div>
+            <button class="buttonsubmit" type="submit">Agregar</button>
+          </form>
         </div>
 
       </form>
     </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Añadir</button>
-    </div>
   </ng-template>
-  <button class="btn btn-lg" style=" height: 50px; width: 200px; border: 1px solid #007F5F; margin-left: 550px;" (click)="open(content)">Añadir Cosecha</button>
+  <button class="btn btn-lg" style="margin-bottom: 30px ;height: 50px; width: 200px; border: 1px solid #007F5F; margin-left: 550px; box-shadow: 3px 3px 1px #ccc;" (click)="open(content)">Añadir Cultivo</button>
   <hr />
 </div>
-  
+
+
+
+
+
+
+
+
+
+

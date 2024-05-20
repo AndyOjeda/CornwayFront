@@ -9,7 +9,6 @@
       <label>Area: {{ cultivo.area }}</label>
       <ng-template pTemplate="">
         <div class="icons flex gap-3 mt-1">
-          <button>
             <ng-template #content let-modal>
               <div class="modal-header">
                 <h4 class="modal-title" id="modal-basic-title">Editar Cultivo</h4>
@@ -40,7 +39,6 @@
               </form>
               </div>
             </ng-template>
-          </button>
           <button class="Minibutton iconbutton" (click)="open(content)"><i class="pi pi-pencil"></i></button>
           <button class="Minibutton iconbutton"><i class="pi pi-times"></i></button>
         </div>

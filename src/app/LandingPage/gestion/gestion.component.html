@@ -3,10 +3,12 @@
 <h1 class="title">Gestión de Cultivos</h1>
 <div class="d-flex flex-wrap" style="margin-left: 20px">
 
-  <div class="card" *ngFor="let gesti of gestion">
-    <p-card header="Cultivo {{ gesti.nombre }}" [style]="{ width: '380px', height: '180px', }">
-      <label>Tipo de Cultivo: {{ gesti.idTipoCultivo }}</label><br>
-      <label>Area: {{ gesti.area }}</label>
+  <div class="card" *ngFor="let gesti of gestiones">
+    <p-card header="Cultivo {{ gesti.IdCultivo }}" [style]="{ width: '380px', height: '180px', }">
+      <label>Tipo Gestion Cultivo: {{ gesti.IdTipoGestionCultivo }}</label><br>
+      <label>Id Insumo: {{ gesti.IdInsumoGestionCultivo }}</label>
+      <label>Fecha: {{ gesti.FechaGestion }}</label>
+      <label>Comentario: {{ gesti.Comentario }}</label>
       <ng-template pTemplate="">
         <div class="icons flex gap-3 mt-1">
           <button>
@@ -24,15 +26,15 @@
                     <form (ngSubmit)="UpdateCultivo()">
                       <div>
                         <label class="titles" for="Nombres">Nombre Para Cultivo</label>
-                        <input class="inputname" type="text" id="Nombres" [(ngModel)]="Nombre" name="Nombres" required>
+                        <input class="inputname" type="text" id="Nombres" [(ngModel)]="IdCultivo" name="Nombres" required>
                       </div>
                       <div class="form-group">
                         <label class="titles" for="idTipoCultivo">Id Tipo Cultivo</label>
-                        <input class="inputnumber" type="number" id="idTipoCultivo" [(ngModel)]="IdTipoCultivo" name="idTipoCultivo" required>
+                        <input class="inputnumber" type="number" id="idTipoCultivo" [(ngModel)]="IdCultivo" name="idTipoCultivo" required>
                       </div>
                       <div class="form-group">
                         <label class="titles" for="area">Área</label>
-                        <input class="inputarea" type="text" id="area" [(ngModel)]="Area" name="area" required>
+                        <input class="inputarea" type="text" id="area" [(ngModel)]="IdCultivo" name="area" required>
                       </div>
                       <button class="buttonsubmit" type="submit">Editar</button>
                     </form>
@@ -58,18 +60,26 @@
 
         <div class="form-container">
           <h2>Agregar Cultivo</h2>
-          <form (ngSubmit)="CreateCultivo()">
+          <form (ngSubmit)="CreateGestionCultivo()">
             <div>
-              <label class="titles" for="Nombres">Nombre Para Cultivo</label>
-              <input class="inputname" type="text" id="Nombres" [(ngModel)]="Nombre" name="Nombres" required>
+              <label class="titles" for="Nombres">Id Cultivo</label>
+              <input class="inputname" type="number" id="IdCultivo" [(ngModel)]="IdCultivo" name="IdCultivo" required>
             </div>
             <div class="form-group">
-              <label class="titles" for="idTipoCultivo">Id Tipo Cultivo</label>
-              <input class="inputnumber" type="number" id="idTipoCultivo" [(ngModel)]="IdTipoCultivo" name="idTipoCultivo" required>
+              <label class="titles" for="idTipoCultivo">Id Tipo Gestion Cultivo</label>
+              <input class="inputnumber" type="number" id="IdTipoGestionCultivo" [(ngModel)]="IdTipoGestionCultivo" name="IdTipoGestionCultivo" required>
             </div>
             <div class="form-group">
-              <label class="titles" for="area">Área</label>
-              <input class="inputarea" type="text" id="area" [(ngModel)]="Area" name="area" required>
+              <label class="titles" for="area">Id Insumo Gestion Cultivo</label>
+              <input class="inputarea" type="text" id="IdInsumoGestionCultivo" [(ngModel)]="IdInsumoGestionCultivo" name="IdInsumoGestionCultivo" required>
+            </div>
+            <div class="form-group">
+              <label class="titles" for="area">Fecha Gestión</label>
+              <input class="inputarea" type="date" id="FechaGestion" [(ngModel)]="FechaGestion" name="FechaGestion" required>
+            </div>
+            <div class="form-group">
+              <label class="titles" for="area">Comentario</label>
+              <input class="inputarea" type="text" id="Comentario" [(ngModel)]="Comentario" name="Comentario" required>
             </div>
             <button class="buttonsubmit" type="submit">Agregar</button>
           </form>
