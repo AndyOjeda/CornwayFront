@@ -41,7 +41,7 @@
   margin-left: 50px;
 }
 
-img{
+.img{
   margin-left: 50px;
   width: 700px;
   height: 730px;
@@ -82,4 +82,30 @@ img{
   margin-left: 250px;
   font-family: "Potta One", system-ui;
   font-weight: 100;
+}
+
+.alertDiv{
+  position: absolute;
+  left: 900px;
+}
+
+.alert {
+  width: 500px;
+  display: none;
+  padding: 10px;
+  background-color: #f44336;
+  color: white;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.alert svg {
+  width: 1.5em;
+  height: 1.5em;
+  fill: white;
+  margin-right: 5px;
 }

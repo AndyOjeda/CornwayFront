@@ -35,8 +35,6 @@ export class CultivosComponent{
   Comentario: string = '';
 
 
-
-
   constructor(private ApiService: ApiService) {}
 
   ngOnInit(): void {

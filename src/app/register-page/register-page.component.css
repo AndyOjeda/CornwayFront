@@ -79,6 +79,30 @@ img{
   margin-bottom: 10px;
 }
 
+.jugador{
+  width: 120px;
+  height:40px;
+  border-radius: 50px;
+  border: 1px solid #007F5F;
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-left: 40px;
+  box-shadow: 5px 5px 5px #ccc;
+  text-align: center;
+}
+
+.agricultor{
+  width: 120px;
+  height:40px;
+  border-radius: 50px;
+  border: 1px solid #007F5F;
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-left: 20px;
+  box-shadow: 5px 5px 5px #ccc;
+  text-align: center;
+}
+
 :host ::ng-deep .p-dropdown{
   width: 550px;
   height:40px;

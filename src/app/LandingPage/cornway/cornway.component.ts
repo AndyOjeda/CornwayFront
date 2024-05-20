@@ -7,30 +7,35 @@ import { TabMenuModule } from 'primeng/tabmenu';
 import { CultivosComponent } from '../cultivos/cultivos.component';
 import { CosechaComponent } from '../cosecha/cosecha.component';
 import { TabViewModule } from 'primeng/tabview';
+import { ConfiguracionComponent } from '../configuracion/configuracion.component';
+import { ApiService } from '../../Services/api.service';
 
 
 @Component({
   selector: 'app-cornway',
   standalone: true,
   imports: [RouterLink, RouterOutlet, ButtonModule, TabMenuModule, CultivosComponent,
-    CosechaComponent, TabViewModule ],
+    CosechaComponent, TabViewModule, ConfiguracionComponent ],
   templateUrl: './cornway.component.html',
   styleUrl: './cornway.component.css'
 })
 export class CornwayComponent {
 
-  Nombre: string = "Andres";
-  Apellido: string = "Ojeda";
+  objetosFiltrados: any[] = [];
+  idFiltro: number = 0; // Suponiendo que el ID a comparar está en localStorage
 
-  constructor(private router: Router,) { }
+  constructor(private ApiService: ApiService) { }
 
-
-
-
-
-
-
-
-
+  ngOnInit(): void {
+    this.idFiltro = parseInt(localStorage.getItem('idLocalStorage') || '0');
+    this.ApiService.getGestion().subscribe(
+      (objects: any[]) => {
+        this.objetosFiltrados = this.ApiService.filterObjectsById(objects, this.idFiltro);
+      },
+      error => {
+        console.error('Error al obtener la lista de objetos:', error);
+      }
+    );
+  }
 
 }

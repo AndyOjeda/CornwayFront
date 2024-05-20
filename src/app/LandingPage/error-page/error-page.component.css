@@ -1,0 +1,44 @@
+body
+{
+  margin: 0;
+  padding: 0;
+  background-color: #000; /* Negro */
+  color: #fff; /* Blanco para el texto */
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+h1{
+  font-family: "Potta One", system-ui ;
+  font-size: 200px;
+  text-shadow: 10px 10px 2px #007F5F;
+}
+
+h2{
+  font-family: "Potta One", system-ui ;
+  font-size: 40px;
+  box-shadow: 2px 2px 30px #007F5F;
+  border-radius: 50px;
+}
+
+.Boton{
+  background-color: #007F5F;
+  width: 100px;
+  height: 50px;
+  color: white;
+  font-family: "Potta One", system-ui ;
+  border-radius: 30px;
+  border: none;
+  box-shadow: 2px 2px 2px #fff ;
+}
+
+.DivBoton{
+  display: flex;
+  position: absolute;
+  left: 20px;
+  top: 20px;
+}
