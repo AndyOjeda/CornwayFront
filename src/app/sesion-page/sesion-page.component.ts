@@ -68,7 +68,5 @@ export class SesionPageComponent implements OnInit {
     );
   }
 
-  onLogOut(): void {
-    localStorage.removeItem('IdUsuario');
-  }
+
 }

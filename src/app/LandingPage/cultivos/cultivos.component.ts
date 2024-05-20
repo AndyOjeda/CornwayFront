@@ -34,90 +34,62 @@ export class CultivosComponent{
   FechaGestion: string = '';
   Comentario: string = '';
 
+  idUsuario = localStorage.getItem('IdUsuario');
 
   constructor(private ApiService: ApiService) {}
 
+  //Traer los cultivos
   ngOnInit(): void {
     this.getCultivos();
   }
 
-  getCultivos(): void {
-    this.ApiService.getCultivos().subscribe(
-      data => {
-        this.cultivos = data;
-      },
-      error => {
-        console.error('Error fetching data', error);
-        // Manejar el error adecuadamente
-      }
-    );
+  //Traer los cultivos por Idusuario
+  getCultivos(){
+    const idUsuario = localStorage.getItem('IdUsuario');
+    if(idUsuario){
+    this.ApiService.getCultivos().subscribe((data: any) => {
+      console.log(data);
+      this.cultivos = data.filter((cultivo: any) => cultivo.idUsuario == idUsuario);
+      console.log(this.cultivos);
+    });
   }
-
-  getTiposCultivos(): void {
-    this.ApiService.getTiposCultivos().subscribe(
-      data => {
-        this.TiposCultivos = data;
-      },
-      error => {
-        console.error('Error fetching data', error);
-        // Manejar el error adecuadamente
-      }
-    );
-  }
-
-  getGestion(): void {
-    this.ApiService.getGestion().subscribe(
-      data => {
-        this.Gestion = data;
-      },
-      error => {
-        console.error('Error fetching data', error);
-        // Manejar el error adecuadamente
-      }
-    );
-  }
+}
 
   CreateCultivo(): void {
-    this.ApiService.CreateCultivo(this.IdUsuario, this.Nombre, this.IdTipoCultivo, this.Area).subscribe(
+    const idUsuario = localStorage.getItem('IdUsuario');
+    if (idUsuario) {
+      this.ApiService.CreateCultivo(+idUsuario, this.Nombre, this.IdTipoCultivo, this.Area).subscribe(
+        response => {
+          console.log('Cultivo added successfully', response);
+          window.location.reload();
+          // Maneja la respuesta exitosa aquí
+        },
+        error => {
+          console.error('Error adding cultivo', error);
+          // Maneja el error aquí
+        }
+      );
+    } else {
+      console.error('IdUsuario not found in localStorage');
+    }
+  }
+
+  UpdateCultivo(): void {
+    const idUsuario = localStorage.getItem('IdUsuario');
+    if (idUsuario) {
+    this.ApiService.updateCultivo(this.IdCultivo, +idUsuario, this.Nombre, this.IdTipoCultivo, this.Area).subscribe(
       response => {
-        console.log('Cultivo added successfully', response);
-        window.location.reload();
+        console.log('Cultivo updated successfully', response);
+        window.location.reload(); 
         // Maneja la respuesta exitosa aquí
       },
       error => {
-        console.error('Error adding cultivo', error);
+        console.error('Error updating cultivo', error);
         // Maneja el error aquí
       }
     );
   }
-
-  deleteCultivo(id: number): void {
-    this.ApiService.deleteCultivo(id).subscribe(
-      response => {
-        console.log('Cultivo deleted successfully', response);
-        // Actualizar la lista de cultivos después de la eliminación
-        this.cultivos = this.cultivos.filter(cultivo => cultivo.id !== id);
-      },
-      error => {
-        console.error('Error deleting cultivo', error);
-        // Manejar el error adecuadamente
-      }
-    );
   }
-
-  updateGestion() {
-    this.ApiService.updateGestion(this.IdGestionCultivo, this.IdCultivo, this.IdTipoGestionCultivo, this.IdInsumoGestionCultivo, this.FechaGestion, this.Comentario)
-      .subscribe((response: any) => {
-        console.log('Gestión actualizada:', response);
-        // Aquí podrías redirigir o mostrar un mensaje de éxito
-      }, error => {
-        console.error('Error al actualizar gestión:', error);
-        // Aquí podrías mostrar un mensaje de error al usuario
-      });
-  }
-
-
-
 
 
 

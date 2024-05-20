@@ -27,15 +27,11 @@ export class CornwayComponent {
   constructor(private ApiService: ApiService) { }
 
   ngOnInit(): void {
-    this.idFiltro = parseInt(localStorage.getItem('idLocalStorage') || '0');
-    this.ApiService.getGestion().subscribe(
-      (objects: any[]) => {
-        this.objetosFiltrados = this.ApiService.filterObjectsById(objects, this.idFiltro);
-      },
-      error => {
-        console.error('Error al obtener la lista de objetos:', error);
-      }
-    );
+  ;
+  }
+
+  onLogOut(): void {
+    localStorage.removeItem('IdUsuario');
   }
 
 }

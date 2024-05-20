@@ -4,8 +4,7 @@
 <div class="d-flex flex-wrap" style="margin-left: 20px">
 
   <div class="card" *ngFor="let cultivo of cultivos">
-    <p-card header="Cultivo {{ cultivo.idCultivo }}" [style]="{ width: '380px', height: '210px', }">
-      <label>{{ cultivo.nombre }}</label><br>
+    <p-card header="Cultivo {{ cultivo.nombre }}" [style]="{ width: '380px', height: '180px', }">
       <label>Tipo de Cultivo: {{ cultivo.idTipoCultivo }}</label><br>
       <label>Area: {{ cultivo.area }}</label>
       <ng-template pTemplate="">
@@ -14,55 +13,40 @@
             <ng-template #content let-modal>
               <div class="modal-header">
                 <h4 class="modal-title" id="modal-basic-title">Editar Cultivo</h4>
-                <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+                <button type="icon-button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
               </div>
               <div class="modal-body">
-                <form>
 
-                  <div class="mb-3">
-                    <label for="dateOfBirth">Nombre del Cultivo</label>
-                    <div class="input-group">
-                      <input
-                        id="cultivo"
-                        class="form-control"
-                        type="text"
-                      />
-                    </div>
-                  </div>
+              <form>
 
-                  <div class="mb-3">
-                    <label for="tipo">Tipo de Cultivo</label><br>
-                    <p-dropdown
-                    class="dropdown"
-                    [options]=""
-                    optionLabel="name"
-                    />
+                  <div class="form-container">
+                    <h2>Editar Cultivo</h2>
+                    <form (ngSubmit)="UpdateCultivo()">
+                      <div>
+                        <label class="titles" for="Nombres">Nombre Para Cultivo</label>
+                        <input class="inputname" type="text" id="Nombres" [(ngModel)]="Nombre" name="Nombres" required>
+                      </div>
+                      <div class="form-group">
+                        <label class="titles" for="idTipoCultivo">Id Tipo Cultivo</label>
+                        <input class="inputnumber" type="number" id="idTipoCultivo" [(ngModel)]="IdTipoCultivo" name="idTipoCultivo" required>
+                      </div>
+                      <div class="form-group">
+                        <label class="titles" for="area">Área</label>
+                        <input class="inputarea" type="text" id="area" [(ngModel)]="Area" name="area" required>
+                      </div>
+                      <button class="buttonsubmit" type="submit">Editar</button>
+                    </form>
                   </div>
-                  <div class="mb-3">
-                    <label for="area">Area</label>
-                    <div class="input-group">
-                      <input
-                        id="area"
-                        class="form-control"
-                        type="text"
-                      />
-                    </div>
-                  </div>
-
-                </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Editar</button>
+              </form>
               </div>
             </ng-template>
-            <button class="" style="border: none;" (click)="open(content)"><i class="pi pi-pencil"></i></button>
           </button>
-          <button ><i class="pi pi-times" ></i></button>
+          <button class="Minibutton iconbutton" (click)="open(content)"><i class="pi pi-pencil"></i></button>
+          <button class="Minibutton iconbutton"><i class="pi pi-times"></i></button>
         </div>
     </ng-template>
     </p-card>
   </div>
-
 
   <ng-template #content let-modal>
     <div class="modal-header">
@@ -76,29 +60,25 @@
           <h2>Agregar Cultivo</h2>
           <form (ngSubmit)="CreateCultivo()">
             <div>
-              <label for="IdUsuario">Id Usuario a Asignar</label>
-              <input type="text" id="IdUsuario" [(ngModel)]="IdUsuario" name="IdUsuario" required>
-            </div>
-            <div>
-              <label for="Nombres">Nombres</label>
-              <input type="text" id="Nombres" [(ngModel)]="Nombre" name="Nombres" required>
+              <label class="titles" for="Nombres">Nombre Para Cultivo</label>
+              <input class="inputname" type="text" id="Nombres" [(ngModel)]="Nombre" name="Nombres" required>
             </div>
             <div class="form-group">
-              <label for="idTipoCultivo">Id Tipo Cultivo</label>
-              <input type="number" id="idTipoCultivo" [(ngModel)]="IdTipoCultivo" name="idTipoCultivo" required>
+              <label class="titles" for="idTipoCultivo">Id Tipo Cultivo</label>
+              <input class="inputnumber" type="number" id="idTipoCultivo" [(ngModel)]="IdTipoCultivo" name="idTipoCultivo" required>
             </div>
             <div class="form-group">
-              <label for="area">Área</label>
-              <input type="text" id="area" [(ngModel)]="Area" name="area" required>
+              <label class="titles" for="area">Área</label>
+              <input class="inputarea" type="text" id="area" [(ngModel)]="Area" name="area" required>
             </div>
-            <button type="submit" (click)="CreateCultivo()">Agregar</button>
+            <button class="buttonsubmit" type="submit">Agregar</button>
           </form>
         </div>
 
       </form>
     </div>
   </ng-template>
-  <button class="btn btn-lg" style=" height: 50px; width: 200px; border: 1px solid #007F5F; margin-left: 550px;" (click)="open(content)">Añadir Cultivo</button>
+  <button class="btn btn-lg" style="height: 50px; width: 200px; border: 1px solid #007F5F; margin-left: 550px; box-shadow: 3px 3px 1px #ccc;" (click)="open(content)">Añadir Cultivo</button>
   <hr />
 </div>
 
@@ -108,10 +88,10 @@
 <div class="d-flex flex-wrap" style="margin-left: 20px">
 
   <div class="card" *ngFor="let cultivo of cultivos">
-    <p-card header="Cultivo {{ cultivo.idCultivo }}" [style]="{ width: '1200px', height: '210px', }">
-      <label>{{ cultivo.nombre }}</label><br>
-      <label>Tipo de Cultivo: {{ cultivo.idTipoCultivo }}</label><br>
-      <label>Area: {{ cultivo.area }}</label>
+    <p-card header="Cultivo {{ cultivo.IdUsuario }}" [style]="{ width: '1200px', height: '210px', }">
+      <label class="titles">{{ cultivo.Nombre }}</label><br>
+      <label class="titles" > Tipo de Cultivo: {{ cultivo.IdTipoCultivo }}</label><br>
+      <label class="titles">Area: {{ cultivo.Area }}</label>
       <ng-template pTemplate="">
         <div class="icons flex gap-3 mt-1">
           <button>
@@ -146,7 +126,7 @@
     <div class="modal-body">
       <form>
 
-        <form (ngSubmit)="updateGestion()">
+        <form>
           <div>
             <label for="IdGestionCultivo">ID de la Gestión:</label>
             <input type="number" id="IdGestionCultivo" name="IdGestionCultivo" [(ngModel)]="IdGestionCultivo" required>
@@ -179,7 +159,6 @@
   <button class="btn btn-lg" style=" height: 50px; width: 200px; border: 1px solid #007F5F; margin-left: 550px;" (click)="open(content)">Añadir Gestion</button>
   <hr />
 </div>
-
 
 
 
