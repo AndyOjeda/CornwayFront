@@ -9,13 +9,15 @@ import { CosechaComponent } from '../cosecha/cosecha.component';
 import { TabViewModule } from 'primeng/tabview';
 import { ConfiguracionComponent } from '../configuracion/configuracion.component';
 import { ApiService } from '../../Services/api.service';
+import { GestionComponent } from '../gestion/gestion.component';
+import { InsumosComponent } from '../insumos/insumos.component';
 
 
 @Component({
   selector: 'app-cornway',
   standalone: true,
   imports: [RouterLink, RouterOutlet, ButtonModule, TabMenuModule, CultivosComponent,
-    CosechaComponent, TabViewModule, ConfiguracionComponent ],
+    CosechaComponent, TabViewModule, ConfiguracionComponent, GestionComponent, InsumosComponent],
   templateUrl: './cornway.component.html',
   styleUrl: './cornway.component.css'
 })

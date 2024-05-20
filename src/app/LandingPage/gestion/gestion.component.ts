@@ -12,13 +12,13 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-cultivos',
+  selector: 'app-gestion',
   standalone: true,
-  imports: [ButtonModule, RouterOutlet, CardModule, DialogModule, InputTextModule, NgbDatepickerModule, DropdownModule, CommonModule, FormsModule],
-  templateUrl: './cultivos.component.html',
-  styleUrl: './cultivos.component.css'
+  imports: [ ButtonModule, RouterOutlet, CardModule, DialogModule, InputTextModule, NgbDatepickerModule, DropdownModule, CommonModule, FormsModule],
+  templateUrl: './gestion.component.html',
+  styleUrl: './gestion.component.css'
 })
-export class CultivosComponent{
+export class GestionComponent {
 
   cultivos: any[] = [];
   gestion: any[] = [];
@@ -130,9 +130,5 @@ export class CultivosComponent{
 				return `with: ${reason}`;
 		}
 	}
-
-
-
-
-
 }
+

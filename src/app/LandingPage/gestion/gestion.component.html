@@ -1,12 +1,12 @@
 
-<!-- CARDS CULTIVOS  -->
-<h1 class="title">Mis Cultivos</h1>
+<!-- CARDS GESTION DE CULTIVOS -->
+<h1 class="title">Gestión de Cultivos</h1>
 <div class="d-flex flex-wrap" style="margin-left: 20px">
 
-  <div class="card" *ngFor="let cultivo of cultivos">
-    <p-card header="Cultivo {{ cultivo.nombre }}" [style]="{ width: '380px', height: '180px', }">
-      <label>Tipo de Cultivo: {{ cultivo.idTipoCultivo }}</label><br>
-      <label>Area: {{ cultivo.area }}</label>
+  <div class="card" *ngFor="let gesti of gestion">
+    <p-card header="Cultivo {{ gesti.nombre }}" [style]="{ width: '380px', height: '180px', }">
+      <label>Tipo de Cultivo: {{ gesti.idTipoCultivo }}</label><br>
+      <label>Area: {{ gesti.area }}</label>
       <ng-template pTemplate="">
         <div class="icons flex gap-3 mt-1">
           <button>
@@ -50,7 +50,7 @@
 
   <ng-template #content let-modal>
     <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Nuevo Cultivo</h4>
+      <h4 class="modal-title" id="modal-basic-title">Nueva Gestión</h4>
       <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
     </div>
     <div class="modal-body">
@@ -78,16 +78,6 @@
       </form>
     </div>
   </ng-template>
-  <button class="btn btn-lg" style="margin-bottom: 30px ;height: 50px; width: 200px; border: 1px solid #007F5F; margin-left: 550px; box-shadow: 3px 3px 1px #ccc;" (click)="open(content)">Añadir Cultivo</button>
+  <button class="btn btn-lg" style="height: 50px; width: 200px; border: 1px solid #007F5F; margin-left: 550px; box-shadow: 3px 3px 1px #ccc;" (click)="open(content)">Añadir Gestión</button>
   <hr />
 </div>
-
-
-
-
-
-
-
-
-
-
