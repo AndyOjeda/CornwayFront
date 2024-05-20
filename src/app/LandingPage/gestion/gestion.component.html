@@ -4,14 +4,13 @@
 <div class="d-flex flex-wrap" style="margin-left: 20px">
 
   <div class="card" *ngFor="let gesti of gestiones">
-    <p-card header="Cultivo {{ gesti.IdCultivo }}" [style]="{ width: '380px', height: '180px', }">
+    <p-card header="Cultivo {{ gesti.IdCultivo }}" [style]="{ width: '1000px', height: '250px', }">
       <label>Tipo Gestion Cultivo: {{ gesti.IdTipoGestionCultivo }}</label><br>
-      <label>Id Insumo: {{ gesti.IdInsumoGestionCultivo }}</label>
-      <label>Fecha: {{ gesti.FechaGestion }}</label>
+      <label>Id Insumo: {{ gesti.IdInsumoGestionCultivo }}</label><br>
+      <label>Fecha: {{ gesti.FechaGestion }}</label><br>
       <label>Comentario: {{ gesti.Comentario }}</label>
       <ng-template pTemplate="">
         <div class="icons flex gap-3 mt-1">
-          <button>
             <ng-template #content let-modal>
               <div class="modal-header">
                 <h4 class="modal-title" id="modal-basic-title">Editar Cultivo</h4>
@@ -42,7 +41,6 @@
               </form>
               </div>
             </ng-template>
-          </button>
           <button class="Minibutton iconbutton" (click)="open(content)"><i class="pi pi-pencil"></i></button>
           <button class="Minibutton iconbutton"><i class="pi pi-times"></i></button>
         </div>
@@ -88,6 +86,6 @@
       </form>
     </div>
   </ng-template>
-  <button class="btn btn-lg" style="height: 50px; width: 200px; border: 1px solid #007F5F; margin-left: 550px; box-shadow: 3px 3px 1px #ccc;" (click)="open(content)">Añadir Gestión</button>
-  <hr />
+  <button class="btn btn-lg btn-add" (click)="open(content)">Añadir Cultivo</button>
+ <hr />
 </div>

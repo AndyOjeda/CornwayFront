@@ -1,1 +1,93 @@
-<p>insumos works!</p>
+<!-- CARDS CULTIVOS  -->
+<h1 class="title">Mis Insumos</h1>
+<div class="d-flex flex-wrap" style="margin-left: 20px">
+
+  <div class="card" *ngFor="let insumo of insumos">
+    <p-card header="Cultivo {{ insumo.IdCultivo }}" [style]="{ width: '380px', height: '180px', }">
+      <label>Tipo Gestion Cultivo: {{ insumo.IdTipoGestionCultivo }}</label><br>
+      <label>Id Insumo: {{ insumo.IdInsumoGestionCultivo }}</label>
+      <label>Fecha: {{ insumo.FechaGestion }}</label>
+      <label>Comentario: {{ insumo.Comentario }}</label>
+      <ng-template pTemplate="">
+        <div class="icons flex gap-3 mt-1">
+          <button>
+            <ng-template #content let-modal>
+              <div class="modal-header">
+                <h4 class="modal-title" id="modal-basic-title">Editar Cultivo</h4>
+                <button type="icon-button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+              </div>
+              <div class="modal-body">
+
+              <form>
+
+                  <div class="form-container">
+                    <h2>Editar Cultivo</h2>
+                    <form (ngSubmit)="UpdateInsumosGestionCultivo()">
+                      <div>
+                        <label class="titles" for="Nombres">Nombre del Insumo</label>
+                        <input class="inputname" type="text" id="Nombres" [(ngModel)]="Nombre" name="Nombres" required>
+                      </div>
+                      <div class="form-group">
+                        <label class="titles" for="idTipoCultivo">Id Tipo Cultivo</label>
+                        <input class="inputnumber" type="number" id="idTipoCultivo" [(ngModel)]="Dosis" name="idTipoCultivo" required>
+                      </div>
+                      <div class="form-group">
+                        <label class="titles" for="area">Área</label>
+                        <input class="inputarea" type="text" id="area" [(ngModel)]="Unidad" name="area" required>
+                      </div>
+                      <button class="buttonsubmit" type="submit">Editar</button>
+                    </form>
+                  </div>
+              </form>
+              </div>
+            </ng-template>
+          </button>
+          <button class="Minibutton iconbutton" (click)="open(content)"><i class="pi pi-pencil"></i></button>
+          <button class="Minibutton iconbutton"><i class="pi pi-times"></i></button>
+        </div>
+    </ng-template>
+    </p-card>
+  </div>
+
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Nueva Gestión</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <form>
+
+        <div class="form-container">
+          <h2>Agregar Cultivo</h2>
+          <form (ngSubmit)="CreateInsumosGestionCultivo()">
+            <div>
+              <label class="titles" for="Nombres">Id Cultivo</label>
+              <input class="inputname" type="number" id="IdCultivo" [(ngModel)]="Nombre" name="IdCultivo" required>
+            </div>
+            <div class="form-group">
+              <label class="titles" for="idTipoCultivo">Id Tipo Gestion Cultivo</label>
+              <input class="inputnumber" type="number" id="IdTipoGestionCultivo" [(ngModel)]="Dosis" name="IdTipoGestionCultivo" required>
+            </div>
+            <div class="form-group">
+              <label class="titles" for="area">Id Insumo Gestion Cultivo</label>
+              <input class="inputarea" type="text" id="IdInsumoGestionCultivo" [(ngModel)]="IdInsumoGestionCultivo" name="IdInsumoGestionCultivo" required>
+            </div>
+            <div class="form-group">
+              <label class="titles" for="area">Fecha Gestión</label>
+              <input class="inputarea" type="date" id="FechaGestion" [(ngModel)]="Unidad" name="FechaGestion" required>
+            </div>
+            <div class="form-group">
+              <label class="titles" for="area">Comentario</label>
+              <input class="inputarea" type="text" id="Comentario" [(ngModel)]="IdInsumoGestionCultivo" name="Comentario" required>
+            </div>
+            <button class="buttonsubmit" type="submit">Agregar</button>
+          </form>
+        </div>
+
+      </form>
+    </div>
+  </ng-template>
+  <button class="btn btn-lg btn-add" (click)="open(content)">Añadir Cultivo</button>
+ <hr />
+</div>
+

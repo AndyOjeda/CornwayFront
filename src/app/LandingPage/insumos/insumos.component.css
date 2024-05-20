@@ -1,0 +1,120 @@
+.title{
+  font-size: 45px;
+  font-family: "Pridi", serif;
+  font-weight: 400;
+  color: #007F5F ;
+  text-align: center;
+}
+
+.form{
+  width: 1000px;
+}
+
+.titleCultive{
+  font-size: 36px;
+  font-family: "Pridi", serif;
+  font-weight: 400;
+  color: #007F5F ;
+  text-align: center;
+  margin-top: 50px ;
+}
+
+button{
+  outline: none;
+  border: none;
+
+}
+
+
+
+.Minibutton{
+  outline: none;
+  border: none;
+  background: transparent;
+}
+.icons{
+  justify-content: right;
+}
+
+.card{
+  font-size: 50px;
+  margin: 25px;
+  border-radius: 5px;
+  border: 1px solid #007F5F;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  label{
+    font-size: 20px;
+  }
+}
+
+
+.btn{
+  margin: 10px;
+  padding: 20px;
+  text-align: center;
+}
+
+.titles{
+  font-size: 20px;
+}
+
+.buttonsubmit{
+  background-color: #04AA6D; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 20px;
+  width: 100%;
+  height: 35px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+
+.inputname{
+  width: 300px;
+  height:35px ;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border-radius: 15px;
+  box-sizing: border-box;
+}
+
+.inputnumber{
+  width: 300px;
+  height: 35px;
+  padding:12px 20px;
+  margin: 8px 0;
+  border-radius: 15px;
+  box-sizing: border-box;
+}
+
+.inputarea{
+  width: 300px;
+  height: 35px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border-radius: 12px;
+  box-sizing: border-box;
+}
+
+.btn-add{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 30px;
+  height: 50px;
+  width: 200px;
+  border: 1px solid #007F5F;
+  margin-left: 550px;
+  box-shadow: 3px 3px 1px #ccc;
+  line-height: 50px; /* Agrega esta línea */;
+}

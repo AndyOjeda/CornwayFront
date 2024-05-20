@@ -1,15 +1,14 @@
 
 <!-- CARDS CULTIVOS  -->
-<h1 class="title">Mis Cultivos</h1>
+<h1 class="title">Mis Cosechas</h1>
 <div class="d-flex flex-wrap" style="margin-left: 20px">
 
   <div class="card" *ngFor="let cose of cosechas">
-    <p-card header="Cultivo {{ cose.nombre }}" [style]="{ width: '380px', height: '180px', }">
-      <label>Tipo de Cultivo: {{ cose.idTipoCultivo }}</label><br>
-      <label>Area: {{ cose.area }}</label>
+    <p-card header="Cosechas de {{ cose.cultivo.tiposCultivo.nombre}}" [style]="{ width: '380px', height: '180px', }">
+      <label>Cantidad: {{ cose.cantidad }}</label><br>
+      <label>Fecha Inicio: {{ cose.fecha }}</label>
       <ng-template pTemplate="">
         <div class="icons flex gap-3 mt-1">
-          <button>
             <ng-template #content let-modal>
               <div class="modal-header">
                 <h4 class="modal-title" id="modal-basic-title">Editar Cultivo</h4>
@@ -21,7 +20,7 @@
 
                   <div class="form-container">
                     <h2>Editar Cultivo</h2>
-                    <form (ngSubmit)="UpdateCultivo()">
+                    <form (ngSubmit)="UpdateCosecha()">
                       <div>
                         <label class="titles" for="Nombres">Nombre Para Cultivo</label>
                         <input class="inputname" type="text" id="Nombres" [(ngModel)]="Nombre" name="Nombres" required>
@@ -40,7 +39,6 @@
               </form>
               </div>
             </ng-template>
-          </button>
           <button class="Minibutton iconbutton" (click)="open(content)"><i class="pi pi-pencil"></i></button>
           <button class="Minibutton iconbutton"><i class="pi pi-times"></i></button>
         </div>
@@ -50,26 +48,26 @@
 
   <ng-template #content let-modal>
     <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Nuevo Cultivo</h4>
+      <h4 class="modal-title" id="modal-basic-title">Nueva Cosecha</h4>
       <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
     </div>
     <div class="modal-body">
       <form>
 
         <div class="form-container">
-          <h2>Agregar Cultivo</h2>
-          <form (ngSubmit)="CreateCultivo()">
+          <h2>Agregar Cosecha</h2>
+          <form (ngSubmit)="CreateCosecha()">
             <div>
-              <label class="titles" for="Nombres">Nombre Para Cultivo</label>
-              <input class="inputname" type="text" id="Nombres" [(ngModel)]="Nombre" name="Nombres" required>
+              <label class="titles" for="Nombres">Tipo de Cosecha</label><br>
+              <input class="inputname" type="number" placeholder="1- Maiz" id="IdCultivo" [(ngModel)]="IdCultivo" name="IdCultivo" required>
             </div>
             <div class="form-group">
-              <label class="titles" for="idTipoCultivo">Id Tipo Cultivo</label>
-              <input class="inputnumber" type="number" id="idTipoCultivo" [(ngModel)]="IdTipoCultivo" name="idTipoCultivo" required>
+              <label class="titles" for="idTipoCultivo">Cantidad</label>
+              <input class="inputnumber" type="number" id="idTipoCultivo" [(ngModel)]="Cantidad" name="idTipoCultivo" required>
             </div>
             <div class="form-group">
-              <label class="titles" for="area">Área</label>
-              <input class="inputarea" type="text" id="area" [(ngModel)]="Area" name="area" required>
+              <label class="titles" for="area">Fecha</label>
+              <input class="inputarea" type="text" id="area" [(ngModel)]="Fecha" name="area" required>
             </div>
             <button class="buttonsubmit" type="submit">Agregar</button>
           </form>
@@ -78,7 +76,7 @@
       </form>
     </div>
   </ng-template>
-  <button class="btn btn-lg" style="margin-bottom: 30px ;height: 50px; width: 200px; border: 1px solid #007F5F; margin-left: 550px; box-shadow: 3px 3px 1px #ccc;" (click)="open(content)">Añadir Cultivo</button>
+  <button class="btn btn-lg btn-add" (click)="open(content)">Añadir Cultivo</button>
   <hr />
 </div>
 

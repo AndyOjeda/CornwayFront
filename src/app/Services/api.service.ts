@@ -831,7 +831,7 @@ export class ApiService {
       );
   }
   //update Cosecha
-  updateCosecha(IdCosecha: number, IdCultivo: number, Cantidad: number, Fecha: string): Observable<any> {
+  UpdateCosecha(IdCosecha: number, IdCultivo: number, Cantidad: number, Fecha: string): Observable<any> {
     const formData: FormData = new FormData();
     formData.append('IdCosecha', IdCosecha.toString());
     formData.append('IdCultivo', IdCultivo.toString());

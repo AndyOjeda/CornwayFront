@@ -20,18 +20,15 @@
 }
 
 button{
+  outline: none;
   border: none;
-  background: transparent;
-}
-
-btn-close{
-  border: 1px solid black;
-}
-
-.iconbutton{
 
 }
+
+
+
 .Minibutton{
+  outline: none;
   border: none;
   background: transparent;
 }
@@ -59,6 +56,7 @@ btn-close{
 
 .titles{
   font-size: 20px;
+  padding-right: 20px;
 }
 
 .buttonsubmit{
@@ -72,12 +70,16 @@ btn-close{
   font-size: 16px;
   border-radius: 20px;
   width: 100%;
+  height: 35px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
 }
 
-
 .inputname{
-  width: 300px;
+  width: 200px;
   height:35px ;
   padding: 12px 20px;
   margin: 8px 0;
@@ -86,7 +88,8 @@ btn-close{
 }
 
 .inputnumber{
-  width: 300px;
+  padding: 10px;
+  width: 200px;
   height: 35px;
   padding:12px 20px;
   margin: 8px 0;
@@ -95,11 +98,26 @@ btn-close{
 }
 
 .inputarea{
-  width: 300px;
+  padding: 10px;
+  width: 200px;
   height: 35px;
   padding: 12px 20px;
   margin: 8px 0;
-  border-radius: 12px;
+  border-radius: 15px;
   box-sizing: border-box;
+}
+
+.btn-add{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 30px;
+  height: 50px;
+  width: 200px;
+  border: 1px solid #007F5F;
+  margin-left: 550px;
+  box-shadow: 3px 3px 1px #ccc;
+  line-height: 50px; /* Agrega esta línea */;
 }
 

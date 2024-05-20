@@ -35,6 +35,8 @@ export class CosechaComponent {
   IdInsumoGestionCultivo: number = 0;
   FechaGestion: string = '';
   Comentario: string = '';
+  Cantidad: number = 0;
+  Fecha: string = '';
 
   idUsuario = localStorage.getItem('IdUsuario');
 
@@ -45,29 +47,28 @@ export class CosechaComponent {
     this.getCosechas();
   }
 
-  //METODOS CULTIVOS
   getCosechas(){
     const idUsuario = localStorage.getItem('IdUsuario');
     if(idUsuario){
     this.ApiService.getCosechas().subscribe((data: any) => {
       console.log(data);
-      this.cosechas = data.filter((cultivo: any) => cultivo.idUsuario == idUsuario);
+      this.cosechas = data.filter((cosechas: any) => cosechas.cultivo.idUsuario == idUsuario);
       console.log(this.cosechas);
     });
   }
 }
 
-  CreateCultivo(): void {
+  CreateCosecha(): void {
     const idUsuario = localStorage.getItem('IdUsuario');
     if (idUsuario) {
-      this.ApiService.CreateCultivo(+idUsuario, this.Nombre, this.IdTipoCultivo, this.Area).subscribe(
+      this.ApiService.CreateCosecha(this.IdCultivo, this.Cantidad, this.Fecha).subscribe(
         response => {
-          console.log('Cultivo added successfully', response);
+          console.log('Cosecha added successfully', response);
           window.location.reload();
           // Maneja la respuesta exitosa aquí
         },
         error => {
-          console.error('Error adding cultivo', error);
+          console.error('Error adding Cosecha', error);
           // Maneja el error aquí
         }
       );
@@ -76,7 +77,7 @@ export class CosechaComponent {
     }
   }
 
-  UpdateCultivo(): void {
+  UpdateCosecha(): void {
     const idUsuario = localStorage.getItem('IdUsuario');
     if (idUsuario) {
     this.ApiService.updateCultivo(this.IdCultivo, +idUsuario, this.Nombre, this.IdTipoCultivo, this.Area).subscribe(
@@ -92,22 +93,6 @@ export class CosechaComponent {
     );
   }
   }
-
-
-  //METODOS GESTION
-
-  getGestion(){
-    const idUsuario = localStorage.getItem('IdUsuario');
-    if(idUsuario){
-    this.ApiService.getGestionesCultivos().subscribe((data: any) => {
-      console.log(data);
-      this.gestion = data.filter((gestion: any) => gestion.idUsuario == idUsuario);
-      console.log(this.gestion);
-    });
-  }
-}
-
-
 
   private modalService = inject(NgbModal);
 	closeResult = '';

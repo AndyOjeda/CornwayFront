@@ -25,6 +25,7 @@ export class CultivosComponent{
   TiposCultivos: any[] = [];
   IdUsuario: number = 0;
   IdTipoCultivo: number = 0;
+  IdTiposCultivos: any[] = [];
   Area: string = '';
   Nombre: string = '';
   IdGestionCultivo: number = 0;
@@ -41,7 +42,17 @@ export class CultivosComponent{
   //Traer los cultivos
   ngOnInit(): void {
     this.getCultivos();
+    this.getTipoCultivo();
   }
+
+  getTipoCultivo(){
+    this.ApiService.getTiposCultivos().subscribe((data: any) => {
+      console.log(data);
+      this.TiposCultivos = data;
+    });
+  }
+
+
 
   //METODOS CULTIVOS
   getCultivos(){

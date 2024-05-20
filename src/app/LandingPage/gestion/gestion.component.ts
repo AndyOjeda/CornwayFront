@@ -10,6 +10,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { ApiService } from '../../Services/api.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { TableModule } from 'primeng/table';
 
 @Component({
   selector: 'app-gestion',
@@ -43,11 +44,11 @@ export class GestionComponent {
     if(idUsuario){
     this.ApiService.getGestionesCultivos().subscribe((data: any) => {
       console.log(data);
-      // this.gestiones = data.filter((cultivo: any) => cultivo.idUsuario == idUsuario);
-      // console.log(this.gestiones);
+      this.gestiones = data.filter((gestion: any) => gestion.cultivos.idUsuario == idUsuario);
+      console.log(this.gestiones);
     });
   }
-}
+  }
 
   CreateGestionCultivo(): void {
     const idUsuario = localStorage.getItem('IdUsuario');
