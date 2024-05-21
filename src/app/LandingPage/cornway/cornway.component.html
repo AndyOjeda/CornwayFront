@@ -8,9 +8,14 @@
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
       <div class="d-flex justify-content-center">
         <label class="title"> Cornway Fields</label>
-      </div>
-      <div style="position: absolute; left: 1050px; margin-top: 35px;">
-      </div>
+
+          <div style="position: absolute; left: 1120px; margin-top: 30px; font-size: 20px; color: white;" *ngFor="let item of users">
+              <label>{{ item.nombres }} {{ item.apellidos }} </label>
+            </div>
+        </div>
+        <div class="dropdown text-end" style="position: absolute; left: 1400px;">
+          <button (click)="onLogOut()"><img src="../../../assets/img/salir2.png" alt="mdo" width="28" height="25" class="rounded-circle"></button>
+        </div>
     </div>
   </div>
 </header>

@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class ApiService {
-  private apiUrl = 'https://cornwayweb.somee.com/api';
+  private apiUrl = 'https://cornway.somee.com/api';
 
 
   constructor(private http: HttpClient, private router: Router) {}

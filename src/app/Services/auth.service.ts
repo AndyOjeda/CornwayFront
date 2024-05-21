@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
 
-  private apiUrl = 'https://cornwayweb.somee.com/api/Usuarios/login';// Cambia esto por tu URL de autenticación
+  private apiUrl = 'https://cornway.somee.com/api/Usuarios/login';// Cambia esto por tu URL de autenticación
 
   constructor(private http: HttpClient) { }
 

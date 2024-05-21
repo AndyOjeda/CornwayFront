@@ -26,19 +26,43 @@ export class InsumosComponent {
   IdInsumoCultivo: number = 0;
 
   Nombre: string = '';
-  Dosis: string = '';
+  Dosis: number = 0;
   Unidad: string = '';
 
   constructor(private ApiService: ApiService) {}
 
   ngOnInit(): void {
-
+    this.getInsumosGestionCultivos();
   }
 
   getInsumosGestionCultivos(){
+    const idUsuario = localStorage.getItem('IdUsuario');
+    if(idUsuario){
+    this.ApiService.getInsumosGestionCultivos().subscribe((data: any) => {
+      console.log(data);
+      this.insumos = data
+      console.log(this.insumos);
+    });
+  }
   }
 
   CreateInsumosGestionCultivo(): void {
+    const idUsuario = localStorage.getItem('IdUsuario');
+    if (idUsuario) {
+      this.ApiService.CreateInsumoGestionCultivo(this.Nombre, this.Dosis, this.Unidad).subscribe(
+        response => {
+          console.log('Cosecha added successfully', response);
+          window.location.reload();
+          // Maneja la respuesta exitosa aquí
+        },
+        error => {
+          console.error('Error adding Cosecha', error);
+          // Maneja el error aquí
+        }
+      );
+    } else {
+      console.error('IdUsuario not found in localStorage');
+    }
   }
 
   UpdateInsumosGestionCultivo(): void {

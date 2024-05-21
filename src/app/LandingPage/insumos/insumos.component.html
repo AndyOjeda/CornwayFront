@@ -35,7 +35,7 @@
 </table>
 
 <br><br><br>
-<div style="text-align: center; justify-content: center;">
+<div style="margin-top: 20px;text-align: center; justify-content: center;">
   <h1 class="title">Mis Insumos</h1>
 </div>
 <div class="d-flex flex-wrap" style="margin-left: 20px">
@@ -99,12 +99,12 @@
         <div class="form-container">
           <form (ngSubmit)="CreateInsumosGestionCultivo()">
             <div class="form-group">
-              <label class="titles" for="IdInsumoCultivo">Id Insumo Cultivo</label> <br>
+              <label class="titles" for="IdInsumoCultivo">Codigo Insumo</label> <br>
               <input class="inputarea" type="text" id="IdInsumoCultivo" [(ngModel)]="IdInsumoCultivo" name="IdInsumoCultivo" required> <br>
             </div>
             <div class="form-group">
               <label class="titles" for="Nombre">Nombre</label> <br>
-              <input class="inputname" type="number" id="Nombre" [(ngModel)]="Nombre" name="Nombre" required> <br>
+              <input class="inputname" type="text" id="Nombre" [(ngModel)]="Nombre" name="Nombre" required> <br>
             </div>
             <div class="form-group">
               <label class="titles" for="Dosis">Dosis</label> <br>
@@ -112,7 +112,7 @@
             </div>
             <div class="form-group">
               <label class="titles" for="Unidad">Unidad</label> <br>
-              <input style="margin-bottom: 25px;" class="inputarea" type="date" id="Unidad" [(ngModel)]="Unidad" name="Unidad" required> <br>
+              <input style="margin-bottom: 25px;" class="inputarea" type="text" id="Unidad" [(ngModel)]="Unidad" name="Unidad" required> <br>
             </div>
             <button class="buttonsubmit" type="submit">Agregar</button>
           </form>
