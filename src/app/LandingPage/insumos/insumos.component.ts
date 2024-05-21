@@ -10,11 +10,12 @@ import { DropdownModule } from 'primeng/dropdown';
 import { ApiService } from '../../Services/api.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { TableModule } from 'primeng/table';
 
 @Component({
   selector: 'app-insumos',
   standalone: true,
-  imports: [ ButtonModule, RouterOutlet, CardModule, DialogModule, InputTextModule, NgbDatepickerModule, DropdownModule, CommonModule, FormsModule],
+  imports: [ ButtonModule, RouterOutlet, CardModule, DialogModule, InputTextModule, NgbDatepickerModule, DropdownModule, CommonModule, FormsModule, TableModule],
   templateUrl: './insumos.component.html',
   styleUrl: './insumos.component.css'
 })
@@ -22,6 +23,8 @@ export class InsumosComponent {
 
   insumos: any[] = [];
   IdInsumoGestionCultivo: number = 0;
+  IdInsumoCultivo: number = 0;
+
   Nombre: string = '';
   Dosis: string = '';
   Unidad: string = '';
@@ -29,7 +32,7 @@ export class InsumosComponent {
   constructor(private ApiService: ApiService) {}
 
   ngOnInit(): void {
-    this.getInsumosGestionCultivos();
+
   }
 
   getInsumosGestionCultivos(){

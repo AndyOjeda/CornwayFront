@@ -55,19 +55,18 @@
       <form>
 
         <div class="form-container">
-          <h2>Agregar Cosecha</h2>
           <form (ngSubmit)="CreateCosecha()">
             <div>
-              <label class="titles" for="Nombres">Tipo de Cosecha</label><br>
-              <input class="inputname" type="number" placeholder="1- Maiz" id="IdCultivo" [(ngModel)]="IdCultivo" name="IdCultivo" required>
+              <label class="titles" for="IdCultivo">Id Cultivo A Asignar</label><br>
+              <input class="inputname" type="number" placeholder="1- Maiz" id="IdCultivo" [(ngModel)]="IdCultivo" name="IdCultivo" required><br>
             </div>
             <div class="form-group">
-              <label class="titles" for="idTipoCultivo">Cantidad</label>
-              <input class="inputnumber" type="number" id="idTipoCultivo" [(ngModel)]="Cantidad" name="idTipoCultivo" required>
+              <label class="titles" for="Cantidad">Cantidad</label> <br>
+              <input class="inputnumber" type="number" id="Cantidad" [(ngModel)]="Cantidad" name="Cantidad" required> <br>
             </div>
             <div class="form-group">
-              <label class="titles" for="area">Fecha</label>
-              <input class="inputarea" type="text" id="area" [(ngModel)]="Fecha" name="area" required>
+              <label class="titles" for="Fecha">Fecha</label> <br>
+              <input style="margin-bottom: 25px;" class="inputarea" type="date" id="Fecha" [(ngModel)]="Fecha" name="Fecha" required> <br>
             </div>
             <button class="buttonsubmit" type="submit">Agregar</button>
           </form>
@@ -76,7 +75,7 @@
       </form>
     </div>
   </ng-template>
-  <button class="btn btn-lg btn-add" (click)="open(content)">Añadir Cultivo</button>
+  <button class="btn btn-lg btn-add" (click)="open(content)">Añadir Cosecha</button>
   <hr />
 </div>
 

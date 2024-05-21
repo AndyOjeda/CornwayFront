@@ -65,7 +65,7 @@ h2{
 /* Estilo para el contenedor de los panels */
 :host ::ng-deep.p-tabview-panels {
   margin-top: 100px;
-  width: 1400px;
+  width: 1430px;
   height: auto;
   padding: 15px;
   border-radius: 30px;

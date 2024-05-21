@@ -35,14 +35,17 @@ export class CultivosComponent{
   FechaGestion: string = '';
   Comentario: string = '';
 
+  selectedCultivo: any = null;
+
   idUsuario = localStorage.getItem('IdUsuario');
 
-  constructor(private ApiService: ApiService) {}
+  constructor(private ApiService: ApiService,
+    
+  ) {}
 
   //Traer los cultivos
   ngOnInit(): void {
     this.getCultivos();
-    this.getTipoCultivo();
   }
 
   getTipoCultivo(){
@@ -86,6 +89,7 @@ export class CultivosComponent{
   }
 
   UpdateCultivo(): void {
+    this.ApiService.getCultivo(this.IdCultivo).subscribe((data: any) => {
     const idUsuario = localStorage.getItem('IdUsuario');
     if (idUsuario) {
     this.ApiService.updateCultivo(this.IdCultivo, +idUsuario, this.Nombre, this.IdTipoCultivo, this.Area).subscribe(
@@ -101,6 +105,7 @@ export class CultivosComponent{
     );
   }
   }
+);}
 
 
   //METODOS GESTION

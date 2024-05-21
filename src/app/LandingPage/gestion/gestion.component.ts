@@ -24,6 +24,7 @@ export class GestionComponent {
   gestiones: any[] = [];
   IdGestionCultivo: number = 0;
   IdCultivo: number = 0;
+  Nombre: string = '';
   IdTipoGestionCultivo: number = 0;
   IdInsumoGestionCultivo: number = 0;
   FechaGestion: string = '';

@@ -69,8 +69,9 @@ button{
   display: inline-block;
   font-size: 16px;
   border-radius: 20px;
-  width: 100%;
+  width: 450px;
   height: 35px;
+  margin-left: 15px;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -79,12 +80,13 @@ button{
 }
 
 .inputname{
-  width: 200px;
+  width: 450px;
   height:35px ;
   padding: 12px 20px;
   margin: 8px 0;
   border-radius: 15px;
   box-sizing: border-box;
+  margin-left: 15px;
 }
 
 .inputnumber{
