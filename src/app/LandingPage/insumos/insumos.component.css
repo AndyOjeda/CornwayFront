@@ -6,6 +6,11 @@
   text-align: center;
 }
 
+.tituloH{
+  margin-left: 50px ;
+}
+
+
 .form{
   width: 1000px;
 }
@@ -119,10 +124,11 @@ button{
   line-height: 50px; /* Agrega esta línea */;
 }
 table{
-  width: 100%;
+  width: 1200px;
   border-collapse: collapse;
   margin: 25px;
   box-shadow: 0 4px 8px  rgba(0,0,0,0.2);
+  margin-left: 70px;
 
 }
 

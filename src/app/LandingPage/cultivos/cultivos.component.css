@@ -71,7 +71,6 @@ button{
   border-radius: 20px;
   width: 450px;
   height: 35px;
-  margin-left: 15px;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -86,7 +85,6 @@ button{
   margin: 8px 0;
   border-radius: 15px;
   box-sizing: border-box;
-  margin-left: 15px;
 }
 
 .inputnumber{
@@ -122,4 +120,3 @@ button{
   box-shadow: 3px 3px 1px #ccc;
   line-height: 50px; /* Agrega esta línea */;
 }
-

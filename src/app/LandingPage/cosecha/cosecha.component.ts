@@ -23,7 +23,7 @@ import { FormsModule } from '@angular/forms';
 export class CosechaComponent {
 
   cosechas: any[] = [];
-  gestion: any[] = [];
+  cosecha: any[] = [];
   TiposCultivos: any[] = [];
   IdUsuario: number = 0;
   IdTipoCultivo: number = 0;
@@ -49,15 +49,19 @@ export class CosechaComponent {
 
   getCosechas(){
     const idUsuario = localStorage.getItem('IdUsuario');
-    if(idUsuario){
-    this.ApiService.getCosechas().subscribe((data: any) => {
-      console.log(data);
-      this.cosechas = data.filter((cosechas: any) => cosechas.cultivo.idUsuario == idUsuario);
-      console.log(this.cosechas);
-    });
-  }
-}
-
+    if (idUsuario !== null && idUsuario !== undefined) {
+        this.ApiService.getCosechas().subscribe(
+            (data: any) => {
+                console.log(data);
+                this.cosechas = data.filter((cosecha: any) => cosecha?.cultivo?.idUsuario == idUsuario);
+                console.log(this.cosechas);
+            },
+            (error: any) => {
+                console.error('Error al obtener las cosechas:', error);
+            }
+        );
+      }
+    }
   CreateCosecha(): void {
     const idUsuario = localStorage.getItem('IdUsuario');
     if (idUsuario) {

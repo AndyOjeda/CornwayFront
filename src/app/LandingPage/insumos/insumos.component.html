@@ -1,88 +1,62 @@
 <!-- CARDS CULTIVOS  -->
-<h1 class="title">Insumos</h1>
+<h1 class="title">Insumo Cultivo</h1>
 <div class="d-flex flex-wrap" style="margin-left: 20px">
 
-
-<table>
-  <td>Codigo</td>
-  <td>Nombre</td>
-  <td>Cantidad</td>
-  <td>Unidad</td>
-  <tr>
-    <td>1</td>
-    <td>Fertilizante</td>
-    <td>50</td>
-    <td>kg</td>
-  </tr>
-  <tr>
-    <td>2</td>
-    <td>Pesticida</td>
-    <td>50</td>
-    <td>kg</td>
-  </tr>
-  <tr>
-    <td>3</td>
-    <td>Hervicidas</td>
-    <td>30</td>
-    <td>kg</td>
-  </tr>
-  <tr>
-    <td>4</td>
-    <td>Agua</td>
-    <td>20</td>
-    <td>Lt</td>
-  </tr>
-</table>
-
-<br><br><br>
-<div style="margin-top: 20px;text-align: center; justify-content: center;">
-  <h1 class="title">Mis Insumos</h1>
+  <table>
+    <td>Codigo</td>
+    <td>Nombre</td>
+    <td>Id Insumo Cultivo</td>
+    <td>Unidad</td>
+    <tr>
+      <td>1</td>
+      <td>Fertilizante</td>
+      <td>1</td>
+      <td>kg</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Pesticida</td>
+      <td>2</td>
+      <td>kg</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Hervicidas</td>
+      <td>3</td>
+      <td>kg</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Agua</td>
+      <td>4</td>
+      <td>Lt</td>
+    </tr>
+  </table>
 </div>
-<div class="d-flex flex-wrap" style="margin-left: 20px">
 
+
+<!-- CARDS GESTION DE CULTIVOS -->
+<h1 class="title">Gestión Insumos</h1>
+<div class="d-flex flex-wrap" style="margin-left: 20px">
 
   <div class="card" *ngFor="let insumo of insumos">
-    <p-card header="Insumo {{ insumo.IdCultivo }}" [style]="{ width: '380px', height: '180px', }">
-      <label>Tipo Gestion Cultivo: {{ insumo.IdTipoGestionCultivo }}</label><br>
-      <label>Id Insumo: {{ insumo.IdInsumoGestionCultivo }}</label>
-      <label>Fecha: {{ insumo.FechaGestion }}</label>
-      <label>Comentario: {{ insumo.Comentario }}</label>
+    <p-card header="Gestion de Insumos: {{ insumo.idInsumoGestionCultivo }}" [style]="{ width: '380px', height: '300px', }">
+      <label>Gestion Cultivo: {{ insumo.idInsumoCultivo }}</label><br>
+      <label>Nombre: {{ insumo.nombre }}</label><br>
+      <label>Dosis: {{ insumo.dosis }}</label><br>
+      <label>Unidad: {{ insumo.unidad }}</label><br>
+
+
       <ng-template pTemplate="">
         <div class="icons flex gap-3 mt-1">
-          <button>
             <ng-template #content let-modal>
               <div class="modal-header">
                 <h4 class="modal-title" id="modal-basic-title">Editar Cultivo</h4>
                 <button type="icon-button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
               </div>
               <div class="modal-body">
-
-              <form>
-
-                  <div class="form-container">
-                    <h2>Editar Cultivo</h2>
-                    <form (ngSubmit)="UpdateInsumosGestionCultivo()">
-                      <div>
-                        <label class="titles" for="Nombres">Nombre del Insumo</label>
-                        <input class="inputname" type="text" id="Nombres" [(ngModel)]="Nombre" name="Nombres" required>
-                      </div>
-                      <div class="form-group">
-                        <label class="titles" for="idTipoCultivo">Id Tipo Cultivo</label>
-                        <input class="inputnumber" type="number" id="idTipoCultivo" [(ngModel)]="Dosis" name="idTipoCultivo" required>
-                      </div>
-                      <div class="form-group">
-                        <label class="titles" for="area">Área</label>
-                        <input class="inputarea" type="text" id="area" [(ngModel)]="Unidad" name="area" required>
-                      </div>
-                      <button class="buttonsubmit" type="submit">Editar</button>
-                    </form>
-                  </div>
-              </form>
               </div>
             </ng-template>
-          </button>
-          <button class="Minibutton iconbutton" (click)="open(content)"><i class="pi pi-pencil"></i></button>
-          <button class="Minibutton iconbutton"><i class="pi pi-times"></i></button>
         </div>
     </ng-template>
     </p-card>
@@ -90,7 +64,7 @@
 
   <ng-template #content let-modal>
     <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Nuevo Insumo</h4>
+      <h4 class="modal-title" id="modal-basic-title">Nueva Gestión</h4>
       <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
     </div>
     <div class="modal-body">
@@ -98,21 +72,21 @@
 
         <div class="form-container">
           <form (ngSubmit)="CreateInsumosGestionCultivo()">
-            <div class="form-group">
-              <label class="titles" for="IdInsumoCultivo">Codigo Insumo</label> <br>
-              <input class="inputarea" type="text" id="IdInsumoCultivo" [(ngModel)]="IdInsumoCultivo" name="IdInsumoCultivo" required> <br>
+            <div>
+              <label class="titles" for="IdInsumoCultivo">Id Insumo Cultivo</label> <br>
+              <input class="inputname" type="number" id="IdInsumoCultivo" [(ngModel)]="IdInsumoCultivo" name="IdInsumoCultivo" required> <br>
             </div>
             <div class="form-group">
               <label class="titles" for="Nombre">Nombre</label> <br>
-              <input class="inputname" type="text" id="Nombre" [(ngModel)]="Nombre" name="Nombre" required> <br>
+              <input class="inputnumber" type="text" id="Nombre" [(ngModel)]="Nombre" name="Nombre" required> <br>
             </div>
             <div class="form-group">
               <label class="titles" for="Dosis">Dosis</label> <br>
-              <input class="inputnumber" type="number" id="Dosis" [(ngModel)]="Dosis" name="Dosis" required>  <br>
+              <input class="inputarea" type="number" id="Dosis" [(ngModel)]="Dosis" name="Dosis" required> <br>
             </div>
             <div class="form-group">
               <label class="titles" for="Unidad">Unidad</label> <br>
-              <input style="margin-bottom: 25px;" class="inputarea" type="text" id="Unidad" [(ngModel)]="Unidad" name="Unidad" required> <br>
+              <input class="inputarea" type="text" id="Unidad" [(ngModel)]="Unidad" name="Unidad" required>   <br>
             </div>
             <button class="buttonsubmit" type="submit">Agregar</button>
           </form>
@@ -121,7 +95,7 @@
       </form>
     </div>
   </ng-template>
-  <button class="btn btn-lg btn-add" (click)="open(content)">Añadir Insumo</button>
+  <button class="btn btn-lg btn-add" (click)="open(content)">Añadir Gestion</button>
  <hr />
 </div>
 

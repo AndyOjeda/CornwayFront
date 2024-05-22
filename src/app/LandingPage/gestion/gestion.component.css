@@ -7,7 +7,7 @@
 }
 
 .form{
-  width: 1000px;
+  width: 800px;
 }
 
 .titleCultive{
@@ -86,7 +86,6 @@ button{
   margin: 8px 0;
   border-radius: 15px;
   box-sizing: border-box;
-  margin-left: 15px;
 }
 
 .inputnumber{
@@ -119,4 +118,27 @@ button{
   margin-left: 550px;
   box-shadow: 3px 3px 1px #ccc;
   line-height: 50px; /* Agrega esta línea */;
+}
+
+
+table{
+  width: 1000px;
+  border-collapse: collapse;
+  margin: 25px;
+  box-shadow: 0 4px 8px  rgba(0,0,0,0.2);
+
+}
+
+tr:nth-child(odd) {
+  background-color: #cbdada;
+}
+
+
+td{
+  text-align: center;
+  width: 200px;
+  height: 30px;
+  font-size: 30px;
+  border-bottom: 0,5px solid #007F5F;
+  border-right: 1px solid #007F5F;
 }

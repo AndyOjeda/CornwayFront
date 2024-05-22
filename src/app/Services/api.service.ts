@@ -357,11 +357,12 @@ export class ApiService {
       );
   }
   //Create InsumosGestionCultivo
-  CreateInsumoGestionCultivo(Nombre: string, Dois: number, Unidad: string): Observable<any> {
+  CreateInsumoGestionCultivo(IdInsumoCultivo: number, Nombre: string, Dosis: number, Unidad: string): Observable<any> {
     // Crea una instancia de FormData y añade los campos de email y password
     const formData: FormData = new FormData();
+    formData.append('IdInsumoCultivo', IdInsumoCultivo.toString());
     formData.append('Nombre', Nombre);
-    formData.append('Dois', Dois.toString());
+    formData.append('Dosis', Dosis.toString());
     formData.append('Unidad', Unidad);
 
     return this.http.post<any>(`${this.apiUrl}/InsumoGestionCultivo`, formData, { observe: 'response' })

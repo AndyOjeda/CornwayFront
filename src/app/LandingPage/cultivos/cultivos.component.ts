@@ -40,7 +40,7 @@ export class CultivosComponent{
   idUsuario = localStorage.getItem('IdUsuario');
 
   constructor(private ApiService: ApiService,
-    
+
   ) {}
 
   //Traer los cultivos
@@ -89,10 +89,7 @@ export class CultivosComponent{
   }
 
   UpdateCultivo(): void {
-    this.ApiService.getCultivo(this.IdCultivo).subscribe((data: any) => {
-    const idUsuario = localStorage.getItem('IdUsuario');
-    if (idUsuario) {
-    this.ApiService.updateCultivo(this.IdCultivo, +idUsuario, this.Nombre, this.IdTipoCultivo, this.Area).subscribe(
+    this.ApiService.updateCultivo(this.IdCultivo, this.IdUsuario , this.Nombre, this.IdTipoCultivo, this.Area).subscribe(
       response => {
         console.log('Cultivo updated successfully', response);
         window.location.reload();
@@ -104,8 +101,7 @@ export class CultivosComponent{
       }
     );
   }
-  }
-);}
+
 
 
   //METODOS GESTION

@@ -1,10 +1,10 @@
 
-<!-- CARDS CULTIVOS  -->
-<h1 class="title">Mis Cultivos</h1>
+
+<h1 style="margin-left: 20px ;" class="title">Mis Cultivos</h1>
 <div class="d-flex flex-wrap" style="margin-left: 20px">
 
   <div class="card" *ngFor="let cultivo of cultivos">
-    <p-card header="Cultivo {{ cultivo.nombre }}" [style]="{ width: '380px', height: '220px', }">
+    <p-card header=" {{ cultivo.nombre }}" [style]="{ width: '380px', height: '220px', }">
       <label>Tipo de Cultivo: {{ cultivo.tiposCultivo.nombre }}</label><br>
       <label>Area: {{ cultivo.area }} m²</label><br>
       <label>Id: {{ cultivo.idCultivo }}</label>
@@ -20,28 +20,27 @@
               <form>
 
                   <div class="form-container">
-                    <h2>Editar Cultivo</h2>
                     <form (ngSubmit)="UpdateCultivo()">
                       <div>
-                        <label class="titles" for="IdCultivo">Id Cultivo</label>
-                        <input class="inputname" type="text" id="IdCultivo" [(ngModel)]="IdCultivo" name="IdCultivo" required>
+                        <label class="titles" for="IdCultivo">Id Cultivo</label> <br>
+                        <input class="inputname" type="text" id="IdCultivo" [(ngModel)]="IdCultivo" name="IdCultivo" required> <br>
                       </div>
                       <div>
-                        <label class="titles" for="IdUsuario">Id Usuario</label>
-                        <input class="inputname" type="text" id="IdUsuario" [(ngModel)]="IdUsuario" name="IdUsuario" required>
+                        <label class="titles" for="IdUsuario">Id Usuario</label> <br>
+                        <input class="inputname" type="text" id="IdUsuario" [(ngModel)]="IdUsuario" name="IdUsuario" required> <br>
                       </div>
                       <div>
-                        <label class="titles" for="Nombre">Nombre</label>
-                        <input class="inputname" type="Nombre" id="Nombre" [(ngModel)]="Nombre" name="Nombre" required>
+                        <label class="titles" for="Nombre">Nombre</label> <br>
+                        <input class="inputname" type="Nombre" id="Nombre" [(ngModel)]="Nombre" name="Nombre" required> <br>
                       </div>
-                      <div class="form-group">
+                      <div>
                         <label class="titles" for="idTipoCultivo">Id Tipo Cultivo</label>
-                        <label class="titles">1- Maiz</label>
-                        <input class="inputnumber" type="number" id="idTipoCultivo" [(ngModel)]="IdTipoCultivo" name="idTipoCultivo" required>
+                        <label class="titles">1- Maiz</label> <br>
+                        <input class="inputnumber" type="number" id="idTipoCultivo" [(ngModel)]="IdTipoCultivo" name="idTipoCultivo" required> <br>
                       </div>
-                      <div class="form-group">
-                        <label class="titles" for="area">Área</label>
-                        <input class="inputarea" type="text" id="area" [(ngModel)]="Area" name="area" required>
+                      <div>
+                        <label class="titles" for="Area">Área</label> <br>
+                        <input class="inputarea" type="text" id="Area" [(ngModel)]="Area" name="Area" required> <br>
                       </div>
                       <button class="buttonsubmit" type="submit">Editar</button>
                     </form>
@@ -49,8 +48,8 @@
               </form>
               </div>
             </ng-template>
-          <button class="Minibutton iconbutton" (click)="open(content)"><i class="pi pi-pencil"></i></button>
-          <button class="Minibutton iconbutton"><i class="pi pi-times"></i></button>
+          <!-- <button class="Minibutton iconbutton" (click)="open(content)"><i class="pi pi-pencil"></i></button>
+          <button class="Minibutton iconbutton"><i class="pi pi-times"></i></button> -->
         </div>
     </ng-template>
     </p-card>
@@ -89,13 +88,3 @@
   <button class="btn btn-lg btn-add" (click)="open(content)">Añadir Cultivo</button>
   <hr />
 </div>
-
-
-
-
-
-
-
-
-
-

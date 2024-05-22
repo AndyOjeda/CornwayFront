@@ -5,7 +5,7 @@
 
   <div class="card" *ngFor="let cose of cosechas">
     <p-card header="Cosechas de {{ cose.cultivo.tiposCultivo.nombre}}" [style]="{ width: '380px', height: '180px', }">
-      <label>Cantidad: {{ cose.cantidad }}</label><br>
+      <label>Cantidad: {{ cose.cantidad }} m²</label><br>
       <label>Fecha Inicio: {{ cose.fecha }}</label>
       <ng-template pTemplate="">
         <div class="icons flex gap-3 mt-1">
@@ -39,8 +39,8 @@
               </form>
               </div>
             </ng-template>
-          <button class="Minibutton iconbutton" (click)="open(content)"><i class="pi pi-pencil"></i></button>
-          <button class="Minibutton iconbutton"><i class="pi pi-times"></i></button>
+          <!-- <button class="Minibutton iconbutton" (click)="open(content)"><i class="pi pi-pencil"></i></button>
+          <button class="Minibutton iconbutton"><i class="pi pi-times"></i></button> -->
         </div>
     </ng-template>
     </p-card>
@@ -57,16 +57,16 @@
         <div class="form-container">
           <form (ngSubmit)="CreateCosecha()">
             <div>
-              <label class="titles" for="IdCultivo">Id Cultivo A Asignar</label><br>
-              <input class="inputname" type="number" placeholder="1- Maiz" id="IdCultivo" [(ngModel)]="IdCultivo" name="IdCultivo" required><br>
+              <label class="titles" for="Nombres">Id Cultivo Para Asignar</label><br>
+              <input class="inputname" type="number" id="IdCultivo" [(ngModel)]="IdCultivo" name="IdCultivo" required><br>
             </div>
             <div class="form-group">
-              <label class="titles" for="Cantidad">Cantidad</label> <br>
+              <label class="titles" for="Cantidad">Cantidad en m²</label> <br>
               <input class="inputnumber" type="number" id="Cantidad" [(ngModel)]="Cantidad" name="Cantidad" required> <br>
             </div>
             <div class="form-group">
               <label class="titles" for="Fecha">Fecha</label> <br>
-              <input style="margin-bottom: 25px;" class="inputarea" type="date" id="Fecha" [(ngModel)]="Fecha" name="Fecha" required> <br>
+              <input class="inputarea" type="date" id="Fecha" [(ngModel)]="Fecha" name="Fecha" required> <br>
             </div>
             <button class="buttonsubmit" type="submit">Agregar</button>
           </form>
@@ -78,13 +78,3 @@
   <button class="btn btn-lg btn-add" (click)="open(content)">Añadir Cosecha</button>
   <hr />
 </div>
-
-
-
-
-
-
-
-
-
-

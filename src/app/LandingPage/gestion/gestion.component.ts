@@ -24,7 +24,6 @@ export class GestionComponent {
   gestiones: any[] = [];
   IdGestionCultivo: number = 0;
   IdCultivo: number = 0;
-  Nombre: string = '';
   IdTipoGestionCultivo: number = 0;
   IdInsumoGestionCultivo: number = 0;
   FechaGestion: string = '';
@@ -45,15 +44,13 @@ export class GestionComponent {
     if(idUsuario){
     this.ApiService.getGestionesCultivos().subscribe((data: any) => {
       console.log(data);
-      this.gestiones = data.filter((gestion: any) => gestion.cultivos.idUsuario == idUsuario);
+      this.gestiones = data.filter((gestion: any) => gestion?.cultivos?.idUsuario == idUsuario);
       console.log(this.gestiones);
     });
   }
   }
 
   CreateGestionCultivo(): void {
-    const idUsuario = localStorage.getItem('IdUsuario');
-    if (idUsuario) {
       this.ApiService.CreateGestionCultivo(this.IdCultivo, this.IdTipoGestionCultivo, this.IdInsumoGestionCultivo, this.FechaGestion, this.Comentario).subscribe(
         response => {
           console.log('Cultivo added successfully', response);
@@ -65,10 +62,7 @@ export class GestionComponent {
           // Maneja el error aquí
         }
       );
-    } else {
-      console.error('IdUsuario not found in localStorage');
     }
-  }
 
   UpdateCultivo(): void {
     const idUsuario = localStorage.getItem('IdUsuario');
@@ -127,4 +121,3 @@ export class GestionComponent {
 		}
 	}
 }
-
