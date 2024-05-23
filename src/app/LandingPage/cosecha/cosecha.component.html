@@ -19,19 +19,18 @@
               <form>
 
                   <div class="form-container">
-                    <h2>Editar Cultivo</h2>
                     <form (ngSubmit)="UpdateCosecha()">
                       <div>
-                        <label class="titles" for="Nombres">Nombre Para Cultivo</label>
-                        <input class="inputname" type="text" id="Nombres" [(ngModel)]="Nombre" name="Nombres" required>
+                        <label class="titles" for="Nombres">Tipo Cosecha</label> <br>
+                        <input class="inputname" type="number" id="Nombres" [(ngModel)]="Nombre" name="Nombres" required> <br>
                       </div>
                       <div class="form-group">
-                        <label class="titles" for="idTipoCultivo">Id Tipo Cultivo</label>
-                        <input class="inputnumber" type="number" id="idTipoCultivo" [(ngModel)]="IdTipoCultivo" name="idTipoCultivo" required>
+                        <label class="titles" for="idTipoCultivo">Cantidad</label> <br>
+                        <input class="inputnumber" type="number" id="idTipoCultivo" [(ngModel)]="IdTipoCultivo" name="idTipoCultivo" required> <br>
                       </div>
                       <div class="form-group">
-                        <label class="titles" for="area">Área</label>
-                        <input class="inputarea" type="text" id="area" [(ngModel)]="Area" name="area" required>
+                        <label class="titles" for="area">Fecha de Inicio</label> <br>
+                        <input class="inputarea" type="date" id="area" [(ngModel)]="Area" name="area" required> <br>
                       </div>
                       <button class="buttonsubmit" type="submit">Editar</button>
                     </form>
@@ -39,8 +38,8 @@
               </form>
               </div>
             </ng-template>
-          <!-- <button class="Minibutton iconbutton" (click)="open(content)"><i class="pi pi-pencil"></i></button>
-          <button class="Minibutton iconbutton"><i class="pi pi-times"></i></button> -->
+          <button class="Minibutton iconbutton" (click)="open(content)"><i class="pi pi-pencil"></i></button>
+          <button class="Minibutton iconbutton" (click)="actualizar()"><i class="pi pi-times"></i></button>
         </div>
     </ng-template>
     </p-card>

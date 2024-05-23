@@ -117,6 +117,24 @@ export class CultivosComponent{
   }
 }
 
+deleteCultivo(idCultivo: number): void {
+  this.ApiService.deleteCultivo(idCultivo).subscribe(
+    response => {
+      console.log('Cultivo deleted successfully', response);
+      window.location.reload();
+      // Maneja la respuesta exitosa aquí
+    },
+    error => {
+      console.error('Error deleting cultivo', error);
+      // Maneja el error aquí
+    }
+  );
+}
+
+actualizar(){
+  window.location.reload();
+}
+
 
 
   private modalService = inject(NgbModal);

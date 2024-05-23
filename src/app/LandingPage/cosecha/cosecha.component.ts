@@ -98,6 +98,10 @@ export class CosechaComponent {
   }
   }
 
+  actualizar(){
+    window.location.reload();
+  }
+
   private modalService = inject(NgbModal);
 	closeResult = '';
 
