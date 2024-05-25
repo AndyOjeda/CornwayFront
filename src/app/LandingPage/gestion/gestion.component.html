@@ -1,63 +1,75 @@
 <h1 class="title">Tipos Gestion Cultivos</h1>
+
   <div style="margin-left: 120px;">
     <table> <td></td> <td>Labrado</td> <td>Sembrado</td> <td>Fertilizado</td> <td>Regado</td> <td>Maduro</td> <tr> <td>Codigo</td> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> </tr> </table>
   </div>
 
 
 <!-- CARDS GESTION DE CULTIVOS -->
-<h1 class="title">Gestión de Cultivos</h1>
-<div class="d-flex flex-wrap" style="margin-left: 20px">
+  <h1 class="title">Gestión de Cultivos</h1>
+  <div class="d-flex flex-wrap" style="margin-left: 20px">
 
 
-  <div class="card" *ngFor="let gesti of gestiones">
-    <p-card header="Gestion de Cultivo: {{ gesti.cultivos.nombre }}" [style]="{ width: '1000px', height: '300px', }">
-      <label>Gestion Cultivo: {{ gesti.tiposGestionCultivo.nombre }}</label><br>
-      <label>Área: {{ gesti.cultivos.area }} m²</label><br>
-      <label>Ultimo Insumo Aplicado: {{ gesti.insumosGestionCultivo?.insumoCultivo?.tiposInsumoGestionCultivo?.nombre }}</label><br>
-      <label>Ultima Dosis Aplicada: {{ gesti.insumosGestionCultivo?.dosis }}</label> <br>
-      <label>Fecha Inicio Gestion: {{ gesti.fechaGestion }}</label><br>
-      <label>Comentario: {{ gesti.comentario }}</label>
-    </p-card>
-  </div>
-</div>
+    <div class="card" *ngFor="let gesti of gestiones">
+      <p-card header="Gestión de Cultivo {{ gesti.cultivos.nombre }}" [style]="{ width: '880px', height: '330px', }">
+        <label>Id: {{ gesti.idGestionCultivo }}</label><br>
+        <label>Gestion Cultivo: {{ gesti.tiposGestionCultivo.nombre }}</label><br>
+        <label>Area: {{ gesti.cultivos.area }} m²</label><br>
+        <label>Ultimo Insumo Aplicado: {{ gesti.insumosGestionCultivo?.insumoCultivo?.tiposInsumoGestionCultivo?.nombre }}</label> <br>
+        <label>Ultima Dosis Aplicada: {{ gesti.insumosGestionCultivo?.dosis }}</label> <br>
+        <label>Fecha Inicio Gestion: {{ gesti.fechaGestion }}</label> <br>
+        <label>Comentario: {{ gesti.comentario }}</label> <br>
 
-      <ng-template pTemplate="">
-        <div class="icons flex gap-3 mt-1">
-            <ng-template #content let-modal>
-              <div class="modal-header">
-                <h4 class="modal-title" id="modal-basic-title">Editar Cultivo</h4>
-                <button type="icon-button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
-              </div>
-              <div class="modal-body">
+        <ng-template pTemplate="">
+          <div class="icons flex gap-3 mt-1">
+              <ng-template #content let-modal>
+                <div class="modal-header">
+                  <h4 class="modal-title" id="modal-basic-title">Editar Gestion</h4>
+                  <button type="icon-button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+                </div>
+                <div class="modal-body">
 
-              <form>
+                <form>
 
-                  <div class="form-container">
-                    <h2>Editar Cultivo</h2>
-                    <form (ngSubmit)="UpdateCultivo()">
-                      <div>
-                        <label class="titles" for="Nombres">Nombre Para Cultivo</label>
-                        <input class="inputname" type="text" id="Nombres" [(ngModel)]="IdCultivo" name="Nombres" required>
-                      </div>
-                      <div class="form-group">
-                        <label class="titles" for="idTipoCultivo">Id Tipo Cultivo</label>
-                        <input class="inputnumber" type="number" id="idTipoCultivo" [(ngModel)]="IdCultivo" name="idTipoCultivo" required>
-                      </div>
-                      <div class="form-group">
-                        <label class="titles" for="area">Área</label>
-                        <input class="inputarea" type="text" id="area" [(ngModel)]="IdCultivo" name="area" required>
-                      </div>
-                      <button class="buttonsubmit" type="submit">Editar</button>
-                    </form>
-                  </div>
-              </form>
-              </div>
-            </ng-template>
-          <!-- <button class="Minibutton iconbutton" (click)="open(content)"><i class="pi pi-pencil"></i></button>
-          <button class="Minibutton iconbutton"><i class="pi pi-times"></i></button> -->
-        </div>
-    </ng-template>
+                    <div class="form-container">
+                      <form (ngSubmit)="UpdateGestion()">
+                        <div>
+                          <label class="titles" for="IdGestionCultivo">Id Gestion Cultivo</label> <br>
+                          <input class="inputname" type="text" id="IdGestionCultivo" [(ngModel)]="IdGestionCultivo" name="IdGestionCultivo" required> <br>
+                        </div>
+                        <div>
+                          <label class="titles" for="IdCultivo">Id Cultivo</label> <br>
+                          <input class="inputname" type="text" id="IdCultivo" [(ngModel)]="IdCultivo" name="IdCultivo" required> <br>
+                        </div>
+                        <div>
+                          <label class="titles" for="IdTipoGestionCultivo">Id Tipo Gestion Cultivo</label> <br>
+                          <input class="inputname" type="number" id="IdTipoGestionCultivo" [(ngModel)]="IdTipoGestionCultivo" name="IdTipoGestionCultivo" required> <br>
+                        </div>
+                        <div>
+                          <label class="titles" for="IdInsumoGestionCultivo">Id Insumo Gestion Cultivo</label>
+                          <input class="inputnumber" type="number" id="IdInsumoGestionCultivo" [(ngModel)]="IdInsumoGestionCultivo" name="IdInsumoGestionCultivo" required> <br>
+                        </div>
+                        <div>
+                          <label class="titles" for="FechaGestion">Fecha Gestion</label> <br>
+                          <input class="inputarea" type="date" id="FechaGestion" [(ngModel)]="FechaGestion" name="FechaGestion" required> <br>
+                        </div>
+                        <div>
+                          <label class="titles" for="Comentario">Comentario</label> <br>
+                          <input class="inputarea" type="text" id="Comentario" [(ngModel)]="Comentario" name="Comentario" required> <br>
+                        </div>
+                        <button class="buttonsubmit" type="submit">Editar</button>
+                      </form>
+                    </div>
+                </form>
+                </div>
+              </ng-template>
+            <button class="Minibutton iconbutton" (click)="open(content)"><i class="pi pi-pencil"></i></button>
 
+            <button class="Minibutton iconbutton"><i class="pi pi-times"></i></button>
+          </div>
+      </ng-template>
+      </p-card>
+    </div>
 
   <ng-template #content let-modal>
     <div class="modal-header">

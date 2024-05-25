@@ -30,6 +30,7 @@ export class CosechaComponent {
   Area: string = '';
   Nombre: string = '';
   IdGestionCultivo: number = 0;
+  IdCosecha: number = 0;
   IdCultivo: number = 0;
   IdTipoGestionCultivo: number = 0;
   IdInsumoGestionCultivo: number = 0;
@@ -82,9 +83,7 @@ export class CosechaComponent {
   }
 
   UpdateCosecha(): void {
-    const idUsuario = localStorage.getItem('IdUsuario');
-    if (idUsuario) {
-    this.ApiService.updateCultivo(this.IdCultivo, +idUsuario, this.Nombre, this.IdTipoCultivo, this.Area).subscribe(
+    this.ApiService.updateCosecha(this.IdCosecha, this.IdCultivo, this.Cantidad, this.Fecha).subscribe(
       response => {
         console.log('Cultivo updated successfully', response);
         window.location.reload();
@@ -96,7 +95,7 @@ export class CosechaComponent {
       }
     );
   }
-  }
+
 
   actualizar(){
     window.location.reload();

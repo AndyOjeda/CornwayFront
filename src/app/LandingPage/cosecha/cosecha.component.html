@@ -4,14 +4,16 @@
 <div class="d-flex flex-wrap" style="margin-left: 20px">
 
   <div class="card" *ngFor="let cose of cosechas">
-    <p-card header="Cosechas de {{ cose.cultivo.tiposCultivo.nombre}}" [style]="{ width: '380px', height: '180px', }">
+    <p-card header="Cosechas de {{ cose.cultivo.tiposCultivo.nombre}}" [style]="{ width: '380px', height: '210px', }">
       <label>Cantidad: {{ cose.cantidad }} m²</label><br>
-      <label>Fecha Inicio: {{ cose.fecha }}</label>
+      <label>Fecha Inicio: {{ cose.fecha }}</label><br>
+      <label>Id: {{ cose.idCosecha }}</label>
+      
       <ng-template pTemplate="">
         <div class="icons flex gap-3 mt-1">
             <ng-template #content let-modal>
               <div class="modal-header">
-                <h4 class="modal-title" id="modal-basic-title">Editar Cultivo</h4>
+                <h4 class="modal-title" id="modal-basic-title">Editar Cosecha</h4>
                 <button type="icon-button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
               </div>
               <div class="modal-body">
@@ -21,16 +23,20 @@
                   <div class="form-container">
                     <form (ngSubmit)="UpdateCosecha()">
                       <div>
-                        <label class="titles" for="Nombres">Tipo Cosecha</label> <br>
-                        <input class="inputname" type="number" id="Nombres" [(ngModel)]="Nombre" name="Nombres" required> <br>
+                        <label class="titles" for="IdCosecha">Id Cosecha</label> <br>
+                        <input class="inputname" type="number" id="IdCosecha" [(ngModel)]="IdCosecha" name="IdCosecha" required> <br>
+                      </div>
+                      <div>
+                        <label class="titles" for="IdCultivo">Id Cultivo</label> <br>
+                        <input class="inputname" type="number" id="IdCultivo" [(ngModel)]="IdCultivo" name="IdCultivo" required> <br>
                       </div>
                       <div class="form-group">
-                        <label class="titles" for="idTipoCultivo">Cantidad</label> <br>
-                        <input class="inputnumber" type="number" id="idTipoCultivo" [(ngModel)]="IdTipoCultivo" name="idTipoCultivo" required> <br>
+                        <label class="titles" for="Cantidad">Cantidad</label> <br>
+                        <input class="inputnumber" type="number" id="Cantidad" [(ngModel)]="Cantidad" name="Cantidad" required> <br>
                       </div>
                       <div class="form-group">
-                        <label class="titles" for="area">Fecha de Inicio</label> <br>
-                        <input class="inputarea" type="date" id="area" [(ngModel)]="Area" name="area" required> <br>
+                        <label class="titles" for="Fecha">Fecha de Inicio</label> <br>
+                        <input class="inputarea" type="date" id="Fecha" [(ngModel)]="Fecha" name="Fecha" required> <br>
                       </div>
                       <button class="buttonsubmit" type="submit">Editar</button>
                     </form>

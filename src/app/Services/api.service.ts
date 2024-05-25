@@ -108,9 +108,7 @@ export class ApiService {
     formData.append('IdTipoCultivo', IdTipoCultivo.toString());
     formData.append('Area', Area);
 
-    const headers = new HttpHeaders().set('Content-Type', 'multipart/form-data');
-
-    return this.http.put<any>(`${this.apiUrl}/Cultivos/${IdCultivo}`, formData, { headers, observe: 'response' })
+    return this.http.put<any>(`${this.apiUrl}/Cultivos`, formData, { observe: 'response' })
       .pipe(
         tap(response => {
           console.log('Cultivo actualizado exitosamente', response);
@@ -689,9 +687,7 @@ export class ApiService {
     formData.append('FechaGestion', FechaGestion);
     formData.append('Comentario', Comentario);
 
-    const headers = new HttpHeaders().set('Content-Type', 'multipart/form-data');
-
-    return this.http.put<any>(`${this.apiUrl}/GestionesCultivo/${IdGestionCultivo}`, formData, { headers, observe: 'response' })
+    return this.http.put<any>(`${this.apiUrl}/GestionesCultivo`, formData, { observe: 'response' })
       .pipe(
         tap(response => {
           console.log('Gestión actualizada exitosamente', response);
@@ -832,16 +828,14 @@ export class ApiService {
       );
   }
   //update Cosecha
-  UpdateCosecha(IdCosecha: number, IdCultivo: number, Cantidad: number, Fecha: string): Observable<any> {
+  updateCosecha(IdCosecha: number, IdCultivo: number, Cantidad: number, Fecha: string): Observable<any> {
     const formData: FormData = new FormData();
     formData.append('IdCosecha', IdCosecha.toString());
     formData.append('IdCultivo', IdCultivo.toString());
     formData.append('Cantidad', Cantidad.toString());
     formData.append('Fecha', Fecha);
 
-    const headers = new HttpHeaders().set('Content-Type', 'multipart/form-data');
-
-    return this.http.put<any>(`${this.apiUrl}/Cosecha/${IdCosecha}`, formData, { headers, observe: 'response' })
+    return this.http.put<any>(`${this.apiUrl}/Cosecha`, formData, { observe: 'response' })
       .pipe(
         tap(response => {
           console.log('Cosecha actualizada exitosamente', response);

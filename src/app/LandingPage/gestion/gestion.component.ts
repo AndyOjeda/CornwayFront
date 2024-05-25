@@ -65,7 +65,7 @@ export class GestionComponent {
       );
     }
 
-  UpdateCultivo(): void {
+  UpdateGestion(): void {
     const idUsuario = localStorage.getItem('IdUsuario');
     if (idUsuario) {
     this.ApiService.updateGestionCultivo(this.IdGestionCultivo,this.IdCultivo, this.IdTipoGestionCultivo, this.IdInsumoGestionCultivo, this.FechaGestion, this.Comentario).subscribe(
@@ -80,6 +80,10 @@ export class GestionComponent {
       }
     );
   }
+  }
+
+  deleteGestion(){
+    
   }
 
 
