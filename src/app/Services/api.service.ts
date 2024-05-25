@@ -94,7 +94,7 @@ export class ApiService {
   }
   //delete Cultivo
   deleteCultivo(id: number): Observable<any> {
-    return this.http.delete<any>(`${this.apiUrl}/Cultivos/${id}`)
+    return this.http.delete<any>(`${this.apiUrl}/Cultivos?id=${id}`)
       .pipe(
         catchError(this.handleError)
       );
@@ -382,7 +382,7 @@ export class ApiService {
   }
   //delete InsumosGestionCultivo
   deleteInsumoGestionCultivo(id: number): Observable<any> {
-    return this.http.delete<any>(`[{this.apiUrl}/InsumoGestionCultivo/${id}`)
+    return this.http.delete<any>(`${this.apiUrl}/InsumoGestionCultivo?id=${id}`)
       .pipe(
         catchError(this.handleError)
       );
@@ -672,7 +672,7 @@ export class ApiService {
   }
   //delete GestionesCultivo
   deleteGestionCultivo(id: number): Observable<any> {
-    return this.http.delete<any>(`[{this.apiUrl}/GestionesCultivo/${id}`)
+    return this.http.delete<any>(`${this.apiUrl}/GestionesCultivo?id=${id}`)
       .pipe(
         catchError(this.handleError)
       );
@@ -822,7 +822,7 @@ export class ApiService {
   }
   //delete Cosecha
   deleteCosecha(id: number): Observable<any> {
-    return this.http.delete<any>(`[{this.apiUrl}/Cosecha/${id}`)
+    return this.http.delete<any>(`${this.apiUrl}/Cosecha?id=${id}`)
       .pipe(
         catchError(this.handleError)
       );

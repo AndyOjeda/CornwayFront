@@ -82,8 +82,19 @@ export class GestionComponent {
   }
   }
 
-  deleteGestion(){
-    
+  deleteGestion(id: number): void {
+    this.IdGestionCultivo = id;
+    this.ApiService.deleteGestionCultivo(id).subscribe(
+      response => {
+        console.log('Cultivo deleted successfully', response);
+        window.location.reload();
+        // Maneja la respuesta exitosa aquí
+      },
+      error => {
+        console.error('Error deleting cultivo', error);
+        // Maneja el error aquí
+      }
+    );
   }
 
 

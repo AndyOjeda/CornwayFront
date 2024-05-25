@@ -38,6 +38,8 @@ export class CosechaComponent {
   Comentario: string = '';
   Cantidad: number = 0;
   Fecha: string = '';
+  partidas: any[] = [];
+  id: number = 0;
 
   idUsuario = localStorage.getItem('IdUsuario');
 
@@ -96,10 +98,23 @@ export class CosechaComponent {
     );
   }
 
-
-  actualizar(){
-    window.location.reload();
+  deleteCosecha(id: number): void {
+    this.IdCosecha = id;
+    this.ApiService.deleteCosecha(id).subscribe(
+      response => {
+        console.log('Cosecha deleted successfully', response);
+        window.location.reload();
+        // Maneja la respuesta exitosa aquí
+      },
+      error => {
+        console.error('Error deleting Cosecha', error);
+        // Maneja el error aquí
+      }
+    );
   }
+
+
+
 
   private modalService = inject(NgbModal);
 	closeResult = '';

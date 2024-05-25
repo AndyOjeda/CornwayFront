@@ -60,12 +60,20 @@ export class InsumosComponent {
       );
     }
 
-  UpdateInsumosGestionCultivo(): void {
-  }
-
-  DeleteInsumosGestionCultivo(): void {
-  }
-
+    deleteInsumoGestion(id: number): void {
+      this.IdInsumoGestionCultivo = id;
+      this.ApiService.deleteInsumoGestionCultivo(id).subscribe(
+        response => {
+          console.log('Gestion deleted successfully', response);
+          window.location.reload();
+          // Maneja la respuesta exitosa aquí
+        },
+        error => {
+          console.error('Error deleting Gestion', error);
+          // Maneja el error aquí
+        }
+      );
+    }
 
   private modalService = inject(NgbModal);
 	closeResult = '';

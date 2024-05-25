@@ -8,7 +8,7 @@
       <label>Cantidad: {{ cose.cantidad }} m²</label><br>
       <label>Fecha Inicio: {{ cose.fecha }}</label><br>
       <label>Id: {{ cose.idCosecha }}</label>
-      
+
       <ng-template pTemplate="">
         <div class="icons flex gap-3 mt-1">
             <ng-template #content let-modal>
@@ -45,7 +45,6 @@
               </div>
             </ng-template>
           <button class="Minibutton iconbutton" (click)="open(content)"><i class="pi pi-pencil"></i></button>
-          <button class="Minibutton iconbutton" (click)="actualizar()"><i class="pi pi-times"></i></button>
         </div>
     </ng-template>
     </p-card>
@@ -82,4 +81,39 @@
   </ng-template>
   <button class="btn btn-lg btn-add" (click)="open(content)">Añadir Cosecha</button>
   <hr />
+
+
+
+  <ng-template #delete let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Eliminar Cosecha</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <form>
+
+        <div class="form-container">
+          <form (ngSubmit)="deleteCosecha(IdCosecha)">
+            <div class="form-group">
+              <label class="titles" for="IdCultivo">Id Cosecha</label><br>
+              <input style="margin-bottom: 25px;" class="inputname" type="number" id="IdCosecha" [(ngModel)]="IdCosecha" name="IdCosecha" required> <br>
+            </div>
+            <button class="buttonsubmit" type="submit">Eliminar</button>
+          </form>
+        </div>
+      </form>
+    </div>
+  </ng-template>
+  <button class="btn btn-medium btn-add" (click)="open(delete)">Eliminar Cosecha</button>
+</div>
+
+
+<!-- LOGROS -->
+<h1 class="title">Mis Logros</h1>
+<div class="d-flex flex-wrap" style="margin-left: 20px">
+
+    <div class="card" *ngFor="let partida of partidas">
+      <p-card header="Logro 1" [style]="{ width: '1200px', height: '150px', }">
+      </p-card>
+    </div>
 </div>

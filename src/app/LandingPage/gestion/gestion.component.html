@@ -108,4 +108,26 @@
       </form>
     </div>
   </ng-template>
-  <button class="btn btn-lg btn-add" (click)="open(content)">Añadir Cultivo</button>
+  <button class="btn btn-lg btn-add" (click)="open(content)">Añadir Gestion</button>
+
+  <ng-template #delete let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Eliminar Gestion</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <form>
+
+        <div class="form-container">
+          <form (ngSubmit)="deleteGestion(IdGestionCultivo)">
+            <div class="form-group">
+              <label class="titles" for="IdCultivo">Id Gestion Cultivo</label><br>
+              <input style="margin-bottom: 25px;" class="inputname" type="number" id="IdGestionCultivo" [(ngModel)]="IdGestionCultivo" name="IdGestionCultivo" required> <br>
+            </div>
+            <button class="buttonsubmit" type="submit">Eliminar</button>
+          </form>
+        </div>
+      </form>
+    </div>
+  </ng-template>
+  <button class="btn btn-lg btn-add" (click)="open(delete)">Eliminar Gestion</button>

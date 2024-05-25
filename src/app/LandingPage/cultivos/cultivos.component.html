@@ -49,7 +49,6 @@
               </div>
             </ng-template>
           <button class="Minibutton iconbutton" (click)="open(content)"><i class="pi pi-pencil"></i></button>
-          <button class="Minibutton iconbutton" (click)="actualizar()"><i class="pi pi-times"></i></button>
         </div>
     </ng-template>
     </p-card>
@@ -86,5 +85,29 @@
     </div>
   </ng-template>
   <button class="btn btn-lg btn-add" (click)="open(content)">Añadir Cultivo</button>
-  <hr />
+
+
+
+
+  <ng-template #delete let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Eliminar Cultivo</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <form>
+
+        <div class="form-container">
+          <form (ngSubmit)="deleteCultivo(IdCultivo)">
+            <div class="form-group">
+              <label class="titles" for="IdCultivo">Id Cultivo</label><br>
+              <input style="margin-bottom: 25px;" class="inputname" type="number" id="IdCultivo" [(ngModel)]="IdCultivo" name="IdCultivo" required> <br>
+            </div>
+            <button class="buttonsubmit" type="submit">Eliminar</button>
+          </form>
+        </div>
+      </form>
+    </div>
+  </ng-template>
+  <button class="btn btn-lg btn-add" (click)="open(delete)">Eliminar Cultivo</button>
 </div>

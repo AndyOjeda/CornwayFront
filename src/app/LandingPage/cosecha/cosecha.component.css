@@ -54,6 +54,10 @@ button{
   text-align: center;
 }
 
+.boton{
+  width: 350px;
+}
+
 .titles{
   font-size: 20px;
 }

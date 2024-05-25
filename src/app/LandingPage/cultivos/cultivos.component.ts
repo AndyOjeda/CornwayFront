@@ -34,6 +34,8 @@ export class CultivosComponent{
   IdInsumoGestionCultivo: number = 0;
   FechaGestion: string = '';
   Comentario: string = '';
+  visible: boolean = false;
+  id: number = 0;
 
   selectedCultivo: any = null;
 
@@ -117,8 +119,9 @@ export class CultivosComponent{
   }
 }
 
-deleteCultivo(idCultivo: number): void {
-  this.ApiService.deleteCultivo(idCultivo).subscribe(
+deleteCultivo(id: number): void {
+  this.IdCultivo = id;
+  this.ApiService.deleteCultivo(id).subscribe(
     response => {
       console.log('Cultivo deleted successfully', response);
       window.location.reload();
@@ -129,10 +132,6 @@ deleteCultivo(idCultivo: number): void {
       // Maneja el error aquí
     }
   );
-}
-
-actualizar(){
-  window.location.reload();
 }
 
 
@@ -160,7 +159,6 @@ actualizar(){
 				return `with: ${reason}`;
 		}
 	}
-
 
 
 
